@@ -1,5 +1,19 @@
-body {
+*,
+::before,
+::after {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-bg-cl: #fff;
+  --secondary-cl: #C4C4C4;
+  --accent-cl: #70A388;
+  --main-font-cl: #313131;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
