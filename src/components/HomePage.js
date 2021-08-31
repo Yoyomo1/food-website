@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/HomePage.css";
 import Logo from "./Logo";
 
@@ -32,10 +32,8 @@ const NavBar = ({ buttons, selected, changeSelected }) => {
   );
 };
 
-const HomePage = () => {
+const HomePage = ({selected, setSelected, searched, setSearched}) => {
   const buttons = ["name", "ingredient", "category", "area"];
-
-  const [selected, setSelected] = useState("name");
 
   const changeSelected = (button) => {
     setSelected(button);
