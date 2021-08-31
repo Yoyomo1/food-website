@@ -1,11 +1,18 @@
-import '../styles/App.css';
+import "../styles/App.css";
+import ResultsPage from "./ResultsPage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const App = () => {
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <Router>
+      <Switch>
+        <Route path="/" exact></Route>
+        <Route path="/results">
+          <ResultsPage />
+        </Route>
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
