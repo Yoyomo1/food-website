@@ -20,7 +20,12 @@ const App = () => {
           />
         </Route>
         <Route path="/results">
-          <ResultsPage />
+          <ResultsPage
+            selected={selected}
+            setSelected={setSelected}
+            searched={searched}
+            setSearched={setSearched}
+          />
         </Route>
         {/* Error page */}
         <Route path="*"></Route>

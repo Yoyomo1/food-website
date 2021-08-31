@@ -1,6 +1,7 @@
 import "../styles/HomePage.css";
 import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
+import { useRef, useEffect } from "react";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
@@ -35,6 +36,7 @@ const NavBar = ({ buttons, selected, changeSelected }) => {
 const HomePage = ({ searched, setSearched, selected, setSelected }) => {
   const buttons = ["name", "ingredient", "category", "area"];
   const history = useHistory();
+  const inputRef = useRef(undefined);
 
   const changeSelected = (button) => {
     setSelected(button);
@@ -44,6 +46,11 @@ const HomePage = ({ searched, setSearched, selected, setSelected }) => {
     e.preventDefault();
     history.push("/results");
   };
+
+  useEffect(() => {
+    const inputElement = inputRef.current;
+    inputElement.focus();
+  });
 
   return (
     <div>
@@ -62,6 +69,7 @@ const HomePage = ({ searched, setSearched, selected, setSelected }) => {
               type="text"
               value={searched}
               onChange={(e) => setSearched(e.target.value)}
+              ref={inputRef}
             />
             <button className="btn"></button>
           </div>
