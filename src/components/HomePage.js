@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/HomePage.css";
 import Logo from "./Logo";
+import { useHistory } from "react-router-dom";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
@@ -37,18 +38,34 @@ const HomePage = () => {
 
   const [selected, setSelected] = useState("name");
 
+  const history = useHistory();
+
   const changeSelected = (button) => {
     setSelected(button);
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    history.push("/results");
   };
 
   return (
     <div>
       <Logo />
-      <NavBar
-        buttons={buttons}
-        selected={selected}
-        changeSelected={changeSelected}
-      />
+
+      <section className="hero">
+        <NavBar
+          buttons={buttons}
+          selected={selected}
+          changeSelected={changeSelected}
+        />
+        <form onSubmit={(e) => submit(e)}>
+          <div className="input-container">
+            <input style={{ height: "3rem" }} type="text" />
+            <button className="btn"></button>
+          </div>
+        </form>
+      </section>
     </div>
   );
 };
