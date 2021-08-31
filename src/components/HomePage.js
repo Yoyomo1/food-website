@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "../styles/HomePage.css";
 import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
@@ -33,11 +32,8 @@ const NavBar = ({ buttons, selected, changeSelected }) => {
   );
 };
 
-const HomePage = () => {
+const HomePage = ({ searched, setSearched, selected, setSelected }) => {
   const buttons = ["name", "ingredient", "category", "area"];
-
-  const [selected, setSelected] = useState("name");
-
   const history = useHistory();
 
   const changeSelected = (button) => {
@@ -61,7 +57,12 @@ const HomePage = () => {
         />
         <form onSubmit={(e) => submit(e)}>
           <div className="input-container">
-            <input style={{ height: "3rem" }} type="text" />
+            <input
+              style={{ height: "3rem" }}
+              type="text"
+              value={searched}
+              onChange={(e) => setSearched(e.target.value)}
+            />
             <button className="btn"></button>
           </div>
         </form>

@@ -5,15 +5,19 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useState } from "react";
 
 const App = () => {
-
   const [selected, setSelected] = useState("name");
-  const [searched, setSearched] = useState('')
+  const [searched, setSearched] = useState("");
 
   return (
     <Router>
       <Switch>
         <Route path="/" exact>
-          <HomePage selected={selected} setSelected={setSelected} searched={searched} setSearched={setSearched} />
+          <HomePage
+            selected={selected}
+            setSelected={setSelected}
+            searched={searched}
+            setSearched={setSearched}
+          />
         </Route>
         <Route path="/results">
           <ResultsPage />
