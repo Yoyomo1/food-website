@@ -13,6 +13,8 @@ const App = () => {
         <Route path="/results">
           <ResultsPage />
         </Route>
+        {/* Error page */}
+        <Route path="*"></Route>
       </Switch>
     </Router>
   );
