@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React, { useState } from "react";
 
 const App = () => {
+  // State variable for current selected query
   const [selected, setSelected] = useState("name");
+
+  // State variable for input form control parametera
   const [searched, setSearched] = useState("");
 
   return (
@@ -28,7 +31,6 @@ const App = () => {
             setSearched={setSearched}
           />
         </Route>
-        {/* Error page */}
         <Route path="*">
           <ErrorPage />
         </Route>
