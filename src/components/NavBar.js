@@ -1,20 +1,24 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
 
 const NavBar = ({ selected, setSelected, searched, setSearched }) => {
-  const selectedRef = useRef(undefined);
-
-  useEffect(() => {
-    selectedRef.current.value = selected;
-  });
+  const submit = (e) => {
+    e.preventDefault();
+    // GET request
+  };
 
   return (
     <>
       <nav className="nav-container">
         <Logo />
-        <form action="">
-          <select className="query" name="query" ref={selectedRef}>
+        <form onSubmit={(e) => submit(e)}>
+          <select
+            className="query"
+            name="query"
+            value={selected}
+            onChange={(e) => setSelected(e.target.value)}
+          >
             <option value="name">name</option>
             <option value="ingredient">ingredient</option>
             <option value="category">category</option>
@@ -26,7 +30,7 @@ const NavBar = ({ selected, setSelected, searched, setSearched }) => {
               value={searched}
               onChange={(e) => setSearched(e.target.value)}
             />
-            <button className="btn"></button>
+            <button className="btn" type="submit"></button>
           </div>
         </form>
       </nav>

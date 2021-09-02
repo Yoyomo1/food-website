@@ -33,8 +33,16 @@ const NavBar = ({ buttons, selected, changeSelected }) => {
   );
 };
 
-const HomePage = ({ searched, setSearched, selected, setSelected }) => {
-  const buttons = ["name", "ingredient", "category", "area"];
+const HomePage = ({
+  queryParams,
+  searched,
+  setSearched,
+  selected,
+  setSelected,
+  finalizedSearch,
+  setFinalizedSearch,
+}) => {
+  const buttons = queryParams;
   const history = useHistory();
   const inputRef = useRef(undefined);
 
@@ -44,6 +52,7 @@ const HomePage = ({ searched, setSearched, selected, setSelected }) => {
 
   const submit = (e) => {
     e.preventDefault();
+    setFinalizedSearch(searched);
     history.push("/results");
   };
 
