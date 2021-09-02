@@ -55,17 +55,15 @@ const App = () => {
 
         const queryParam = search[0].split("=")[1];
         const searchParam = search[1].split("=")[1];
-        setSelected(queryParam);
-        setSearched(searchParam);
-        setFinalizedSearch(searchParam);
+
+        if (queryParam !== selected || searchParam !== finalizedSearch) {
+          setSelected(queryParam);
+          setSearched(searchParam);
+          setFinalizedSearch(searchParam);
+        }
       }
     };
-
     parseURL();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected, finalizedSearch]);
-
-  useEffect(() => {
     setURL();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected, finalizedSearch]);
