@@ -22,7 +22,7 @@ const App = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const isValidQuery = (query) => {
+  const isValidQuery = () => {
     const inputQuery = queryParams.find((query) => query === selected);
     return inputQuery ? true : false;
   };
@@ -33,7 +33,7 @@ const App = () => {
       // Fetch data
     }
     // Invalid query parameter
-    else if (!isValidQuery(location.query)) {
+    else if (!isValidQuery()) {
       // Display model with error
       console.log("INVALID query param");
     }
