@@ -2,7 +2,14 @@ import React from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
 
-const NavBar = ({ selected, setSelected, searched, setSearched }) => {
+const NavBar = ({
+  selected,
+  setSelected,
+  searched,
+  setSearched,
+  finalizedSearch,
+  setFinalizedSearch,
+}) => {
   const submit = (e) => {
     e.preventDefault();
     // GET request
@@ -28,9 +35,14 @@ const NavBar = ({ selected, setSelected, searched, setSearched }) => {
             <input
               type="text"
               value={searched}
-              onChange={(e) => setSearched(e.target.value)}
+              onChange={(e) => {
+                setSearched(e.target.value);
+              }}
             />
-            <button className="btn" type="submit"></button>
+            <button
+              className="btn"
+              onClick={() => setFinalizedSearch(searched)}
+            ></button>
           </div>
         </form>
       </nav>

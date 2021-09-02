@@ -29,7 +29,9 @@ const App = () => {
 
   const setURL = () => {
     if (isValidQuery(selected) && finalizedSearch !== "") {
-      history.push(`${location.pathname}?query=${selected}&search=${searched}`);
+      history.push(
+        `${location.pathname}?query=${selected}&search=${finalizedSearch}`
+      );
       // Fetch data
     }
     // Invalid query parameter
@@ -87,6 +89,8 @@ const App = () => {
           setSelected={setSelected}
           searched={searched}
           setSearched={setSearched}
+          finalizedSearch={finalizedSearch}
+          setFinalizedSearch={setFinalizedSearch}
         />
       </Route>
       <Route path="/test">

@@ -2,7 +2,14 @@ import React from "react";
 import NavBar from "./NavBar";
 import "../styles/ResultsPage.css";
 
-const ResultsPage = ({ selected, setSelected, searched, setSearched }) => {
+const ResultsPage = ({
+  selected,
+  setSelected,
+  searched,
+  setSearched,
+  finalizedSearch,
+  setFinalizedSearch,
+}) => {
   return (
     <div className="container">
       <NavBar
@@ -10,6 +17,8 @@ const ResultsPage = ({ selected, setSelected, searched, setSearched }) => {
         setSelected={setSelected}
         searched={searched}
         setSearched={setSearched}
+        finalizedSearch={finalizedSearch}
+        setFinalizedSearch={setFinalizedSearch}
       />
     </div>
   );
