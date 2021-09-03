@@ -6,9 +6,10 @@ import { Switch, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import ItemPage from "./ItemPage";
-import axios from "axios";
 import { AppProvider } from "../context";
 import { queryParams } from "../data";
+
+const baseURL = "www.themealdb.com/api/json/v1/1/search.php?";
 
 const App = () => {
   // State variable for current selected query
@@ -32,8 +33,7 @@ const App = () => {
     };
 
     if (isValidQuery(selected) && searched !== "") {
-      history.push(`${location.pathname}?query=${selected}&search=${searched}`);
-      // Fetch data
+      history.push(`/results/?query=${selected}&search=${searched}`);
     }
     // Invalid query parameter
     else if (!isValidQuery()) {
