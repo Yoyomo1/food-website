@@ -1,8 +1,8 @@
 import "../styles/HomePage.css";
 import Logo from "./Logo";
-import { useHistory } from "react-router-dom";
 import { useRef, useEffect } from "react";
 import { queryParams } from "../data";
+import { useGlobalContext } from "../context";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
@@ -43,8 +43,8 @@ const HomePage = ({
   setFinalizedSearch,
 }) => {
   const buttons = queryParams;
-  const history = useHistory();
   const inputRef = useRef(undefined);
+  const { setURL } = useGlobalContext();
 
   const changeSelected = (button) => {
     setSelected(button);
@@ -53,7 +53,7 @@ const HomePage = ({
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
-    history.push("/results");
+    setURL(selected, searched);
   };
 
   useEffect(() => {
@@ -64,7 +64,6 @@ const HomePage = ({
   return (
     <div>
       <Logo />
-
       <section className="hero">
         <NavBar
           buttons={buttons}
