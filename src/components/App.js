@@ -4,9 +4,10 @@ import HomePage from "./HomePage";
 // import ErrorPage from "./ErrorPage";
 import { Switch, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import ItemPage from "./ItemPage";
 import axios from "axios";
+import { AppProvider } from "../context";
 import { queryParams } from "../data";
 
 const App = () => {
@@ -20,6 +21,26 @@ const App = () => {
   const [finalizedSearch, setFinalizedSearch] = useState("");
 
   const location = useLocation();
+  const history = useHistory();
+
+  // Set url functions is required in the nav bar and home page
+  // or any input box that sends a get request
+  const setURL = (selected, searched) => {
+    const isValidQuery = () => {
+      const inputQuery = queryParams.find((query) => query === selected);
+      return inputQuery ? true : false;
+    };
+
+    if (isValidQuery(selected) && searched !== "") {
+      history.push(`${location.pathname}?query=${selected}&search=${searched}`);
+      // Fetch data
+    }
+    // Invalid query parameter
+    else if (!isValidQuery()) {
+      // Display model with error
+      console.log("INVALID query param");
+    }
+  };
 
   useEffect(() => {
     // Parce on page reload or form submit
@@ -35,51 +56,50 @@ const App = () => {
 
         const queryParam = search[0].split("=")[1];
         const searchParam = search[1].split("=")[1];
-        if (!(queryParam === selected || searchParam === finalizedSearch)) {
-          setSelected(queryParam);
-          setSearched(searchParam);
-          setFinalizedSearch(searchParam);
-        }
+
+        setSelected(queryParam);
+        setSearched(searchParam);
+        setFinalizedSearch(searchParam);
       }
     };
 
     parseURL();
-    // setURL(obj);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected, finalizedSearch]);
+  }, [selected, finalizedSearch, location.search, location]);
 
   return (
-    <Switch>
-      <Route path="/" exact>
-        <HomePage
-          selected={selected}
-          setSelected={setSelected}
-          searched={searched}
-          setSearched={setSearched}
-          finalizedSearch={finalizedSearch}
-          setFinalizedSearch={setFinalizedSearch}
-        />
-      </Route>
-      <Route path="/results">
-        <ResultsPage
-          selected={selected}
-          setSelected={setSelected}
-          searched={searched}
-          setSearched={setSearched}
-          finalizedSearch={finalizedSearch}
-          setFinalizedSearch={setFinalizedSearch}
-        />
-      </Route>
-      <Route path="/test">
-        <ItemPage
-          selected={selected}
-          setSelected={setSelected}
-          searched={searched}
-          setSearched={setSearched}
-        />
-      </Route>
-      <Route path="*">{/* <ErrorPage /> */}</Route>
-    </Switch>
+    <AppProvider value={{ setURL: setURL }}>
+      <Switch>
+        <Route path="/" exact>
+          <HomePage
+            selected={selected}
+            setSelected={setSelected}
+            searched={searched}
+            setSearched={setSearched}
+            finalizedSearch={finalizedSearch}
+            setFinalizedSearch={setFinalizedSearch}
+          />
+        </Route>
+        <Route path="/results">
+          <ResultsPage
+            selected={selected}
+            setSelected={setSelected}
+            searched={searched}
+            setSearched={setSearched}
+            finalizedSearch={finalizedSearch}
+            setFinalizedSearch={setFinalizedSearch}
+          />
+        </Route>
+        <Route path="/test">
+          <ItemPage
+            selected={selected}
+            setSelected={setSelected}
+            searched={searched}
+            setSearched={setSearched}
+          />
+        </Route>
+        <Route path="*">{/* <ErrorPage /> */}</Route>
+      </Switch>
+    </AppProvider>
   );
 };
 

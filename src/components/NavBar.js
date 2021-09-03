@@ -1,8 +1,7 @@
 import React from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
-import { useHistory, useLocation } from "react-router-dom";
-import { queryParams } from "../data";
+import { useGlobalContext } from "../context";
 
 const NavBar = ({
   selected,
@@ -12,30 +11,12 @@ const NavBar = ({
   finalizedSearch,
   setFinalizedSearch,
 }) => {
-  const history = useHistory();
-  const location = useLocation();
+  const { setURL } = useGlobalContext();
 
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
     setURL(selected, searched);
-  };
-
-  const setURL = (selected, searched) => {
-    const isValidQuery = () => {
-      const inputQuery = queryParams.find((query) => query === selected);
-      return inputQuery ? true : false;
-    };
-
-    if (isValidQuery(selected) && searched !== "") {
-      history.push(`${location.pathname}?query=${selected}&search=${searched}`);
-      // Fetch data
-    }
-    // Invalid query parameter
-    else if (!isValidQuery()) {
-      // Display model with error
-      console.log("INVALID query param");
-    }
   };
 
   return (
