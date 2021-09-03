@@ -2,6 +2,7 @@ import "../styles/HomePage.css";
 import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
 import { useRef, useEffect } from "react";
+import { queryParams } from "../data";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
@@ -34,7 +35,6 @@ const NavBar = ({ buttons, selected, changeSelected }) => {
 };
 
 const HomePage = ({
-  queryParams,
   searched,
   setSearched,
   selected,

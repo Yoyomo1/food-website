@@ -7,8 +7,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import ItemPage from "./ItemPage";
 import axios from "axios";
-
-const queryParams = ["name", "ingredient", "category", "area"];
+import { queryParams } from "../data";
 
 const App = () => {
   // State variable for current selected query
@@ -20,27 +19,7 @@ const App = () => {
   // Need another search state to trigger re-render when form is submitted
   const [finalizedSearch, setFinalizedSearch] = useState("");
 
-  const history = useHistory();
   const location = useLocation();
-
-  const isValidQuery = () => {
-    const inputQuery = queryParams.find((query) => query === selected);
-    return inputQuery ? true : false;
-  };
-
-  const setURL = () => {
-    if (isValidQuery(selected) && finalizedSearch !== "") {
-      history.push(
-        `${location.pathname}?query=${selected}&search=${finalizedSearch}`
-      );
-      // Fetch data
-    }
-    // Invalid query parameter
-    else if (!isValidQuery()) {
-      // Display model with error
-      console.log("INVALID query param");
-    }
-  };
 
   useEffect(() => {
     // Parce on page reload or form submit
@@ -56,18 +35,16 @@ const App = () => {
 
         const queryParam = search[0].split("=")[1];
         const searchParam = search[1].split("=")[1];
-
-        // Only change query params if the parsed url is dfferent
-        // This avoids overided the state values
-        if (queryParam !== selected || searchParam !== finalizedSearch) {
+        if (!(queryParam === selected || searchParam === finalizedSearch)) {
           setSelected(queryParam);
           setSearched(searchParam);
           setFinalizedSearch(searchParam);
         }
       }
     };
+
     parseURL();
-    setURL();
+    // setURL(obj);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected, finalizedSearch]);
 
@@ -79,7 +56,6 @@ const App = () => {
           setSelected={setSelected}
           searched={searched}
           setSearched={setSearched}
-          queryParams={queryParams}
           finalizedSearch={finalizedSearch}
           setFinalizedSearch={setFinalizedSearch}
         />
