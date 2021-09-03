@@ -1,7 +1,7 @@
 import "../styles/App.css";
 import ResultsPage from "./ResultsPage";
 import HomePage from "./HomePage";
-// import ErrorPage from "./ErrorPage";
+import ErrorPage from "./ErrorPage";
 import { Switch, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
@@ -79,7 +79,7 @@ const App = () => {
             setFinalizedSearch={setFinalizedSearch}
           />
         </Route>
-        <Route path="/results">
+        <Route path="/results" exact>
           <ResultsPage
             selected={selected}
             setSelected={setSelected}
@@ -89,7 +89,7 @@ const App = () => {
             setFinalizedSearch={setFinalizedSearch}
           />
         </Route>
-        <Route path="/test">
+        <Route path="/test" exact>
           <ItemPage
             selected={selected}
             setSelected={setSelected}
@@ -97,7 +97,9 @@ const App = () => {
             setSearched={setSearched}
           />
         </Route>
-        <Route path="*">{/* <ErrorPage /> */}</Route>
+        <Route path="*">
+          <ErrorPage />
+        </Route>
       </Switch>
     </AppProvider>
   );
