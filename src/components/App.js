@@ -6,6 +6,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import ItemPage from "./ItemPage";
+import axios from "axios";
 
 const queryParams = ["name", "ingredient", "category", "area"];
 
@@ -56,6 +57,8 @@ const App = () => {
         const queryParam = search[0].split("=")[1];
         const searchParam = search[1].split("=")[1];
 
+        // Only change query params if the parsed url is dfferent
+        // This avoids overided the state values
         if (queryParam !== selected || searchParam !== finalizedSearch) {
           setSelected(queryParam);
           setSearched(searchParam);
