@@ -1,0 +1,60 @@
+.item-grid-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: 3rem;
+  grid-template-columns: 2fr 3fr;
+  grid-template-areas:
+    "name-section image-section"
+    "ingredients-section image-section"
+    "ingredients-section image-section"
+    "youtube-section youtube-section";
+  justify-content: center;
+}
+
+.content-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 1rem 0 1rem;
+}
+
+.name-section {
+  grid-area: name-section;
+  letter-spacing: 4px;
+}
+
+.ingredients-section {
+  grid-area: ingredients-section;
+}
+
+.image-section {
+  grid-area: image-section;
+}
+
+.youtube-section {
+  grid-area: youtube-section;
+}
+
+.ingredient {
+  display: flex;
+}
+
+.ingredients-header {
+  margin-bottom: 1rem;
+}
+
+.ingredient-name {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.measurement {
+  min-width: 5rem;
+}
+
+/* temp styles */
+.img-placeholder {
+  height: 500px;
+  width: 500px;
+  background: black;
+}

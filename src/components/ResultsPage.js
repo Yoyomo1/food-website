@@ -18,39 +18,27 @@ const Result = ({result}) => {
   )
 }
 
-const ResultsGrid = ({getRequest}) => {
-  //!!! parameters
-  const results = getRequest().meals
-
+const ResultsPage = ({
+  selected,
+  setSelected,
+  searched,
+  setSearched,
+  finalizedSearch,
+  setFinalizedSearch,
+}) => {
   return (
-    <div className='grid-container'>
-      <div className='results-grid-container'>
-        {results.map(result => <Result key={result.idMeal} result={result} /> )}
-      </div>
+    <div className="container">
+      <NavBar
+        selected={selected}
+        setSelected={setSelected}
+        searched={searched}
+        setSearched={setSearched}
+        finalizedSearch={finalizedSearch}
+        setFinalizedSearch={setFinalizedSearch}
+      />
     </div>
   )
 }
 
-const ResultsPage = ({ selected, setSelected, searched, setSearched }) => {
-
-  const getRequest = () => {
-    return data
-  }
-
-  return (
-    <Router>
-      <div className="container">
-        <NavBar
-          selected={selected}
-          setSelected={setSelected}
-          searched={searched}
-          setSearched={setSearched}
-        />
-      </div>
-      <ResultsGrid getRequest={getRequest}/>
-    </Router>
-    
-  );
-};
 
 export default ResultsPage;
