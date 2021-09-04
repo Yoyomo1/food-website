@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import "../styles/ResultsPage.css";
+import { useGlobalContext } from "../context";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useParams
+  useParams,
 } from "react-router-dom";
 import data from '../data'
 import axios from 'axios'
@@ -30,18 +31,23 @@ const ResultsGrid = ({results}) => {
   return (
     <div className='results-grid-container'>
       {results.map(result => <Result key={result.idMeal} result={result} />)}
-    </div>
-  )
+    </div>)
 }
 
-const ResultsPage = ({
-  selected,
-  setSelected,
-  searched,
-  setSearched,
-  finalizedSearch,
-  setFinalizedSearch,
-}) => {
+
+
+
+const ResultsPage = () => {
+
+  const {
+    setURL,
+    selected,
+    setSelected,
+    searched,
+    setSearched,
+    finalizedSearch,
+    setFinalizedSearch,
+  } = useGlobalContext();
 
   const [results, setResults] = useState([])
 
@@ -100,6 +106,7 @@ const ResultsPage = ({
           setSearched={setSearched}
           finalizedSearch={finalizedSearch}
           setFinalizedSearch={setFinalizedSearch}
+          setURL={setURL}
         />
       </div>
       <ResultsGrid results={results} />
@@ -107,6 +114,5 @@ const ResultsPage = ({
     
   )
 }
-
 
 export default ResultsPage;

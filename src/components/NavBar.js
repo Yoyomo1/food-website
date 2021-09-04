@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
-import { useGlobalContext } from "../context";
 
 const NavBar = ({
+  setURL,
   selected,
   setSelected,
   searched,
@@ -11,11 +11,10 @@ const NavBar = ({
   finalizedSearch,
   setFinalizedSearch,
 }) => {
-  const { setURL } = useGlobalContext();
-
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
+
     setURL(selected, searched);
   };
 
@@ -28,7 +27,10 @@ const NavBar = ({
             className="query"
             name="query"
             value={selected}
-            onChange={(e) => setSelected(e.target.value)}
+            onChange={(e) => {
+              setURL(e.target.value, searched);
+              setSelected(e.target.value);
+            }}
           >
             <option value="name">name</option>
             <option value="ingredient">ingredient</option>

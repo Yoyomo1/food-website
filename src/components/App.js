@@ -9,8 +9,6 @@ import ItemPage from "./ItemPage";
 import { AppProvider } from "../context";
 import { queryParams } from "../data";
 
-const baseURL = "www.themealdb.com/api/json/v1/1/search.php?";
-
 const App = () => {
   // State variable for current selected query
   const [selected, setSelected] = useState("name");
@@ -67,35 +65,26 @@ const App = () => {
   }, [selected, finalizedSearch, location.search, location]);
 
   return (
-    <AppProvider value={{ setURL: setURL }}>
+    <AppProvider
+      value={{
+        setURL,
+        selected,
+        setSelected,
+        searched,
+        setSearched,
+        finalizedSearch,
+        setFinalizedSearch,
+      }}
+    >
       <Switch>
         <Route path="/" exact>
-          <HomePage
-            selected={selected}
-            setSelected={setSelected}
-            searched={searched}
-            setSearched={setSearched}
-            finalizedSearch={finalizedSearch}
-            setFinalizedSearch={setFinalizedSearch}
-          />
+          <HomePage />
         </Route>
         <Route path="/results" exact>
-          <ResultsPage
-            selected={selected}
-            setSelected={setSelected}
-            searched={searched}
-            setSearched={setSearched}
-            finalizedSearch={finalizedSearch}
-            setFinalizedSearch={setFinalizedSearch}
-          />
+          <ResultsPage />
         </Route>
         <Route path="/test" exact>
-          <ItemPage
-            selected={selected}
-            setSelected={setSelected}
-            searched={searched}
-            setSearched={setSearched}
-          />
+          <ItemPage />
         </Route>
         <Route path="*">
           <ErrorPage />
