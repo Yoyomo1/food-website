@@ -9,8 +9,6 @@ import ItemPage from "./ItemPage";
 import { AppProvider } from "../context";
 import { queryParams } from "../data";
 
-const baseURL = "www.themealdb.com/api/json/v1/1/search.php?";
-
 const App = () => {
   // State variable for current selected query
   const [selected, setSelected] = useState("name");
