@@ -1,14 +1,11 @@
-.item-grid-container {
-  display: grid;
-  gap: 2rem;
-  grid-template-rows: 3rem;
-  grid-template-columns: 2fr 3fr;
-  grid-template-areas:
-    "name-section image-section"
-    "ingredients-section image-section"
-    "ingredients-section image-section"
-    "youtube-section youtube-section";
-  justify-content: center;
+.name-section,
+.ingredients-section {
+  letter-spacing: 3px;
+}
+
+.ingredient-name,
+.measurement {
+  letter-spacing: 2px;
 }
 
 .content-section {
@@ -20,7 +17,6 @@
 
 .name-section {
   grid-area: name-section;
-  letter-spacing: 4px;
 }
 
 .ingredients-section {
@@ -37,6 +33,7 @@
 
 .ingredient {
   display: flex;
+  margin-bottom: 0.5rem;
 }
 
 .ingredients-header {
@@ -57,4 +54,34 @@
   height: 500px;
   width: 500px;
   background: black;
+}
+
+@media only screen and (min-width: 836px) {
+  .item-grid-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-rows: 3rem;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas:
+      "name-section image-section"
+      "ingredients-section image-section"
+      "ingredients-section image-section"
+      "youtube-section youtube-section";
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 836px) {
+  .item-grid-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-rows: 3rem;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas:
+      "name-section image-section"
+      "ingredients-section image-section"
+      "ingredients-section image-section"
+      "youtube-section youtube-section";
+    justify-content: center;
+  }
 }

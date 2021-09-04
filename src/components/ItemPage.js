@@ -27,7 +27,7 @@ const ItemPage = () => {
         <div className="item-grid-container">
           <section className="name-section">
             <h1>Name</h1>
-            <h4>Area</h4>
+            <p>Area</p>
           </section>
           <section className="ingredients-section">
             <h2 className="ingredients-header">Ingredients</h2>
