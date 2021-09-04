@@ -34,17 +34,17 @@ const NavBar = ({ buttons, selected, changeSelected }) => {
   );
 };
 
-const HomePage = ({
-  searched,
-  setSearched,
-  selected,
-  setSelected,
-  finalizedSearch,
-  setFinalizedSearch,
-}) => {
+const HomePage = () => {
   const buttons = queryParams;
   const inputRef = useRef(undefined);
-  const { setURL } = useGlobalContext();
+  const {
+    selected,
+    setSelected,
+    searched,
+    setSearched,
+    setFinalizedSearch,
+    setURL,
+  } = useGlobalContext();
 
   const changeSelected = (button) => {
     setSelected(button);

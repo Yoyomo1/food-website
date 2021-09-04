@@ -67,35 +67,26 @@ const App = () => {
   }, [selected, finalizedSearch, location.search, location]);
 
   return (
-    <AppProvider value={{ setURL: setURL }}>
+    <AppProvider
+      value={{
+        setURL,
+        selected,
+        setSelected,
+        searched,
+        setSearched,
+        finalizedSearch,
+        setFinalizedSearch,
+      }}
+    >
       <Switch>
         <Route path="/" exact>
-          <HomePage
-            selected={selected}
-            setSelected={setSelected}
-            searched={searched}
-            setSearched={setSearched}
-            finalizedSearch={finalizedSearch}
-            setFinalizedSearch={setFinalizedSearch}
-          />
+          <HomePage />
         </Route>
         <Route path="/results" exact>
-          <ResultsPage
-            selected={selected}
-            setSelected={setSelected}
-            searched={searched}
-            setSearched={setSearched}
-            finalizedSearch={finalizedSearch}
-            setFinalizedSearch={setFinalizedSearch}
-          />
+          <ResultsPage />
         </Route>
         <Route path="/test" exact>
-          <ItemPage
-            selected={selected}
-            setSelected={setSelected}
-            searched={searched}
-            setSearched={setSearched}
-          />
+          <ItemPage />
         </Route>
         <Route path="*">
           <ErrorPage />

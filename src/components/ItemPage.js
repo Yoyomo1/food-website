@@ -1,11 +1,28 @@
 import React from "react";
 import NavBar from "./NavBar";
 import "../styles/ItemPage.css";
+import { useGlobalContext } from "../context";
 
 const ItemPage = () => {
+  const {
+    setURL,
+    selected,
+    setSelected,
+    searched,
+    setSearched,
+    setFinalizedSearch,
+  } = useGlobalContext();
+
   return (
     <>
-      <NavBar />
+      <NavBar
+        setURL={setURL}
+        selected={selected}
+        setSelected={setSelected}
+        searched={searched}
+        setSearched={setSearched}
+        setFinalizedSearch={setFinalizedSearch}
+      />
       <div className="content-section">
         <div className="item-grid-container">
           <section className="name-section">
