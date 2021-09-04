@@ -4,3 +4,20 @@
   padding: 0 1vw;
   min-width: 400px;
 }
+
+.grid-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.results-grid-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.result-container {
+}
+
+.result-image {
+  width: 15rem;
+}
