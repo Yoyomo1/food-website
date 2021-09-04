@@ -28,17 +28,19 @@ const ResultsGrid = ({results}) => {
   
   console.log(results);
 
-  return (
+  if (results) {
+    return (
     <div className='results-grid-container'>
       {results.map(result => <Result key={result.idMeal} result={result} />)}
     </div>)
+  } else {
+    return <div className='no-results-text'>We could not find any results matching your search :(</div>
+  }
+
+  
 }
 
-
-
-
 const ResultsPage = () => {
-
   const {
     setURL,
     selected,
@@ -53,7 +55,6 @@ const ResultsPage = () => {
 
   useEffect(() => {
     const getResults = () => {
-
       const changeResults = response => {
         const newResults = response.data.meals
         setResults(newResults)
@@ -93,8 +94,6 @@ const ResultsPage = () => {
 
     getResults();
   }, [finalizedSearch, selected])
-
-
 
   return (
     <div>

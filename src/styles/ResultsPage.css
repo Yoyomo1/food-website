@@ -33,3 +33,10 @@
   text-align: center;
   margin: auto;
 }
+
+.no-results-text {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  margin-top: 10rem;
+}
