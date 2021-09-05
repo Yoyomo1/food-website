@@ -17,22 +17,29 @@
 
 .name-section {
   grid-area: name-section;
+  max-width: 40ch;
+}
+
+.name {
+  margin-bottom: 0.5rem;
 }
 
 .ingredients-section {
   grid-area: ingredients-section;
+  max-width: 380px;
 }
 
 .image-section {
   grid-area: image-section;
-}
-
-.youtube-section {
-  grid-area: youtube-section;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .ingredient {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
 }
 
@@ -40,9 +47,15 @@
   margin-bottom: 1rem;
 }
 
+.meal-img {
+  height: auto;
+  /* width: min(40vw, 300px); */
+  width: 500px;
+}
+
 .ingredient-name {
-  flex: 1;
-  margin-right: 1rem;
+  flex: 1 1 auto;
+  margin-right: 4vw;
 }
 
 .measurement {
@@ -51,37 +64,53 @@
 
 /* temp styles */
 .img-placeholder {
-  height: 500px;
-  width: 500px;
   background: black;
 }
 
-@media only screen and (min-width: 836px) {
+@media only screen and (min-width: 890px) {
   .item-grid-container {
     display: grid;
-    gap: 2rem;
-    grid-template-rows: 3rem;
-    grid-template-columns: 2fr 3fr;
+    gap: 1rem;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "name-section image-section"
       "ingredients-section image-section"
       "ingredients-section image-section"
       "youtube-section youtube-section";
-    justify-content: center;
+    margin: 1rem;
+  }
+  .youtube-section {
+    grid-area: youtube-section;
+    height: 60vh;
+    width: 60vw;
   }
 }
 
-@media only screen and (max-width: 836px) {
+@media only screen and (max-width: 890px) {
   .item-grid-container {
     display: grid;
-    gap: 2rem;
-    grid-template-rows: 3rem;
-    grid-template-columns: 2fr 3fr;
+    gap: 1rem;
     grid-template-areas:
-      "name-section image-section"
-      "ingredients-section image-section"
-      "ingredients-section image-section"
-      "youtube-section youtube-section";
-    justify-content: center;
+      "name-section"
+      "image-section"
+      "ingredients-section"
+      "youtube-section";
+  }
+
+  .meal-img {
+    height: auto;
+    width: 400px;
+  }
+  .youtube-section {
+    grid-area: youtube-section;
+    height: 60vh;
+    width: 60vw;
+  }
+
+  .youtube-video {
+    aspect-ratio: 16/9;
+    height: auto;
+    width: 80vw;
   }
 }

@@ -2,43 +2,36 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import "../styles/ResultsPage.css";
 import { useGlobalContext } from "../context";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from "react-router-dom";
-import data from '../data'
-import axios from 'axios'
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-const Result = ({result}) => {
-
-  const urlString = `/${result.strMeal}`
-  console.log(urlString);
+const Result = ({ result }) => {
+  const urlString = `/results/${result.strMeal.replaceAll(" ", "-")}`;
   return (
     <Link to={urlString} className="result-container">
-        <img src={result.strMealThumb} alt="Picture did not load" className='result-image' />
-        <div className='result-text'>{result.strMeal}</div>
+      <img src={result.strMealThumb} alt="food" className="result-image" />
+      <div className="result-text">{result.strMeal}</div>
     </Link>
-  )
-}
+  );
+};
 
-const ResultsGrid = ({results}) => {
-  
-  console.log(results);
-
+const ResultsGrid = ({ results }) => {
   if (results) {
     return (
-    <div className='results-grid-container'>
-      {results.map(result => <Result key={result.idMeal} result={result} />)}
-    </div>)
+      <div className="results-grid-container">
+        {results.map((result) => (
+          <Result key={result.idMeal} result={result} />
+        ))}
+      </div>
+    );
   } else {
-    return <div className='no-results-text'>We could not find any results matching your search :(</div>
+    return (
+      <div className="no-results-text">
+        We could not find any results matching your search :(
+      </div>
+    );
   }
-
-  
-}
+};
 
 const ResultsPage = () => {
   const {
@@ -51,49 +44,57 @@ const ResultsPage = () => {
     setFinalizedSearch,
   } = useGlobalContext();
 
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     const getResults = () => {
-      const changeResults = response => {
-        const newResults = response.data.meals
-        setResults(newResults)
-      }
-  
-      switch(selected) {
-        case 'name':
+      const changeResults = (response) => {
+        const newResults = response.data.meals;
+        setResults(newResults);
+      };
+
+      switch (selected) {
+        case "name":
           axios
-            .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${finalizedSearch}`)
-            .then(response => {
-              changeResults(response)
-            })
+            .get(
+              `https://www.themealdb.com/api/json/v1/1/search.php?s=${finalizedSearch}`
+            )
+            .then((response) => {
+              changeResults(response);
+            });
           break;
-        case 'ingredient':
+        case "ingredient":
           axios
-            .get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${finalizedSearch}`)
-            .then(response => {
+            .get(
+              `https://www.themealdb.com/api/json/v1/1/filter.php?i=${finalizedSearch}`
+            )
+            .then((response) => {
               console.log("bruh");
-              changeResults(response)
-            })
+              changeResults(response);
+            });
           break;
-        case 'category':
+        case "category":
           axios
-            .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${finalizedSearch}`)
-            .then(response => {
-              changeResults(response)
-            })
+            .get(
+              `https://www.themealdb.com/api/json/v1/1/filter.php?c=${finalizedSearch}`
+            )
+            .then((response) => {
+              changeResults(response);
+            });
           break;
         default:
           axios
-            .get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${finalizedSearch}`)
-            .then(response => {
-              changeResults(response)
-            })
+            .get(
+              `https://www.themealdb.com/api/json/v1/1/filter.php?a=${finalizedSearch}`
+            )
+            .then((response) => {
+              changeResults(response);
+            });
       }
-    }
+    };
 
     getResults();
-  }, [finalizedSearch, selected])
+  }, [finalizedSearch, selected]);
 
   return (
     <div>
@@ -110,8 +111,7 @@ const ResultsPage = () => {
       </div>
       <ResultsGrid results={results} />
     </div>
-    
-  )
-}
+  );
+};
 
 export default ResultsPage;

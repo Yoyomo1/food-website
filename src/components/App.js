@@ -2,7 +2,7 @@ import "../styles/App.css";
 import ResultsPage from "./ResultsPage";
 import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import ItemPage from "./ItemPage";
@@ -83,7 +83,7 @@ const App = () => {
         <Route path="/results" exact>
           <ResultsPage />
         </Route>
-        <Route path="/test" exact>
+        <Route path="/results/:name" exact>
           <ItemPage />
         </Route>
         <Route path="*">
