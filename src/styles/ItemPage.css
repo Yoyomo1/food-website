@@ -59,9 +59,8 @@
   text-align: end;
 }
 
-/* temp styles */
-.img-placeholder {
-  background: black;
+.youtube-section {
+  grid-area: youtube-section;
 }
 
 @media only screen and (min-width: 890px) {
@@ -77,10 +76,12 @@
       "youtube-section youtube-section";
     margin: 1rem;
   }
-  .youtube-section {
+
+  .youtube-video {
     grid-area: youtube-section;
-    height: 60vh;
-    width: 60vw;
+    aspect-ratio: 16/9;
+    height: auto;
+    width: 100%;
   }
 }
 
@@ -88,6 +89,7 @@
   .item-grid-container {
     display: grid;
     gap: 1rem;
+    margin: 1rem;
     grid-template-areas:
       "name-section"
       "image-section"
@@ -99,15 +101,10 @@
     height: auto;
     width: 400px;
   }
-  .youtube-section {
-    grid-area: youtube-section;
-    height: 60vh;
-    width: 60vw;
-  }
 
   .youtube-video {
     aspect-ratio: 16/9;
     height: auto;
-    width: 80vw;
+    width: 400px;
   }
 }
