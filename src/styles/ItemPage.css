@@ -12,12 +12,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem 1rem 0 1rem;
+  margin: 1rem 2rem 2rem 2rem;
 }
 
 .name-section {
   grid-area: name-section;
-  max-width: 40ch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 35ch;
 }
 
 .name {
@@ -31,6 +34,8 @@
 
 .image-section {
   grid-area: image-section;
+  display: flex;
+  align-items: flex-end;
 }
 
 .ingredient {
@@ -44,7 +49,7 @@
 }
 
 .meal-img {
-  height: auto;
+  height: 500px;
   /* width: min(40vw, 300px); */
   width: 500px;
 }
@@ -67,14 +72,13 @@
   .item-grid-container {
     display: grid;
     gap: 1rem;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 0.5fr 2fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "name-section image-section"
       "ingredients-section image-section"
       "ingredients-section image-section"
       "youtube-section youtube-section";
-    margin: 1rem;
   }
 
   .youtube-video {
@@ -89,7 +93,6 @@
   .item-grid-container {
     display: grid;
     gap: 1rem;
-    margin: 1rem;
     grid-template-areas:
       "name-section"
       "image-section"
