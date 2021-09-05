@@ -88,7 +88,7 @@ const ItemPage = () => {
               );
             })}
           </section>
-          <section className="image-section center">
+          <section className="image-section">
             <img className="meal-img" src={info.strMealThumb} alt="meal" />
           </section>
           <section className="youtube-section">
