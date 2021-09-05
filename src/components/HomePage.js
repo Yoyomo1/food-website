@@ -63,7 +63,9 @@ const HomePage = () => {
 
   return (
     <div>
-      <Logo />
+      <div className='homepage-logo'>
+         <Logo />
+      </div>
       <section className="hero">
         <NavBar
           buttons={buttons}

@@ -30,3 +30,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+.homepage-logo {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .homepage-logo {
+    margin-top: 2rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+  }
+}

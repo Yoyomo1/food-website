@@ -26,6 +26,6 @@
 
 .link:hover {
   box-shadow: 0 0 50px var(--secondary);
-  color: var(--secondary-cl);
+  color: white;
   background-color: var(--accent-cl);
 }

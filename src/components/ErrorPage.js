@@ -21,7 +21,9 @@ const ErrorPage = () => {
 
   return (
     <div>
-      <Logo />
+      <div className='homepage-logo'>
+         <Logo />
+      </div>
       <div className="flex-container">
         <Header text={errorMessage} />
         <Link text={homeText} link={homeLink} />
