@@ -6,9 +6,10 @@
 }
 
 .results-grid-container {
-  margin-top: 2rem;
+  width: 100rem;
+  margin: 2rem auto;
   display: grid;
-  gap: 1rem;
+  gap: 5rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
 }
