@@ -50,7 +50,6 @@ const ItemPage = () => {
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${actualName}`
         )
         .then((meals) => {
-          // console.log(meals.data.meals[0]);
           // Get first meal in response object
           const { strMeal, strArea, strMealThumb, strYoutube } =
             meals.data.meals[0];
@@ -77,6 +76,9 @@ const ItemPage = () => {
             <h1 className="name">{info.strMeal}</h1>
             <p>{info.strArea}</p>
           </section>
+          <section className="image-section">
+            <img className="meal-img" src={info.strMealThumb} alt="meal" />
+          </section>
           <section className="ingredients-section">
             <h2 className="ingredients-header">Ingredients</h2>
             {ingredients.map(({ name, measurement }) => {
@@ -88,15 +90,10 @@ const ItemPage = () => {
               );
             })}
           </section>
-          <section className="image-section">
-            <img className="meal-img" src={info.strMealThumb} alt="meal" />
-          </section>
           <section className="youtube-section">
             <iframe
               className="youtube-video"
               title="instructional video"
-              width="853"
-              height="480"
               src={info.embeddedURL}
               frameBorder="0"
             ></iframe>

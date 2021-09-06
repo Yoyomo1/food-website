@@ -8,11 +8,17 @@
   letter-spacing: 2px;
 }
 
+.item-grid-container {
+  display: block;
+  max-width: 600px;
+}
+
 .content-section {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 1rem 2rem 2rem 2rem;
+  font-size: clamp(0.9rem, 0.5rem + 1vw, 1.5rem);
 }
 
 .name-section {
@@ -21,6 +27,7 @@
   flex-direction: column;
   justify-content: center;
   max-width: 35ch;
+  margin-bottom: 1rem;
 }
 
 .name {
@@ -29,34 +36,34 @@
 
 .ingredients-section {
   grid-area: ingredients-section;
-  max-width: 380px;
+  max-width: 600px;
+  margin-bottom: 1rem;
 }
 
 .image-section {
   grid-area: image-section;
   display: flex;
   align-items: flex-end;
+  margin-bottom: 1rem;
 }
 
 .ingredient {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .ingredients-header {
   margin-bottom: 1rem;
 }
 
-.meal-img {
-  height: 500px;
-  /* width: min(40vw, 300px); */
-  width: 500px;
-}
-
 .ingredient-name {
   flex: 1 1 auto;
   margin-right: 4vw;
+}
+
+.meal-img {
+  max-width: 100%;
 }
 
 .measurement {
@@ -66,6 +73,11 @@
 
 .youtube-section {
   grid-area: youtube-section;
+}
+
+.youtube-video {
+  aspect-ratio: 16/9;
+  max-width: 100%;
 }
 
 @media only screen and (min-width: 890px) {
@@ -79,35 +91,10 @@
       "ingredients-section image-section"
       "ingredients-section image-section"
       "youtube-section youtube-section";
+    max-width: none;
   }
 
-  .youtube-video {
-    grid-area: youtube-section;
-    aspect-ratio: 16/9;
-    height: auto;
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 890px) {
-  .item-grid-container {
-    display: grid;
-    gap: 1rem;
-    grid-template-areas:
-      "name-section"
-      "image-section"
-      "ingredients-section"
-      "youtube-section";
-  }
-
-  .meal-img {
-    height: auto;
-    width: 400px;
-  }
-
-  .youtube-video {
-    aspect-ratio: 16/9;
-    height: auto;
-    width: 400px;
+  .ingredients-section {
+    margin-right: 2rem;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
 
@@ -11,6 +11,8 @@ const NavBar = ({
   finalizedSearch,
   setFinalizedSearch,
 }) => {
+  const [isShowingMobileView, setIsShowingMobileView] = useState(false);
+
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
@@ -18,11 +20,29 @@ const NavBar = ({
     setURL(selected, searched);
   };
 
+  // Adds search text when the layout switches to mobile view
+  // Remember to update width if the css is changed
+  const handleResize = () => {
+    if (window.innerWidth <= 377) {
+      setIsShowingMobileView(true);
+    } else {
+      setIsShowingMobileView(false);
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
   return (
     <>
       <nav className="nav-container">
         <Logo />
-        <form onSubmit={(e) => submit(e)}>
+        <form className="select-input-container" onSubmit={(e) => submit(e)}>
           <select
             className="query"
             name="query"
@@ -44,8 +64,11 @@ const NavBar = ({
               onChange={(e) => {
                 setSearched(e.target.value);
               }}
+              placeholder={`Search by ${selected}`}
             />
-            <button className="btn" type="submit"></button>
+            <button className="btn" type="submit">
+              {isShowingMobileView ? "Search" : ""}
+            </button>
           </div>
         </form>
       </nav>
