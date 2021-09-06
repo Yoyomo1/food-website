@@ -42,6 +42,8 @@ const ResultsPage = () => {
     setSearched,
     finalizedSearch,
     setFinalizedSearch,
+    finalizedSelected,
+    setFinalizedSelected,
   } = useGlobalContext();
 
   const [results, setResults] = useState([]);
@@ -53,7 +55,7 @@ const ResultsPage = () => {
         setResults(newResults);
       };
 
-      switch (selected) {
+      switch (finalizedSelected) {
         case "name":
           axios
             .get(
@@ -93,7 +95,7 @@ const ResultsPage = () => {
     };
 
     getResults();
-  }, [finalizedSearch, selected]);
+  }, [finalizedSearch, finalizedSelected]);
 
   return (
     <div>
@@ -106,6 +108,8 @@ const ResultsPage = () => {
           finalizedSearch={finalizedSearch}
           setFinalizedSearch={setFinalizedSearch}
           setURL={setURL}
+          finalizedSelected={finalizedSelected}
+          setFinalizedSelected={setFinalizedSelected}
         />
       </div>
       <ResultsGrid results={results} />

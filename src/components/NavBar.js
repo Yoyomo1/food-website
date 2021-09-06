@@ -10,13 +10,15 @@ const NavBar = ({
   setSearched,
   finalizedSearch,
   setFinalizedSearch,
+  finalizedSelected,
+  setFinalizedSelected,
 }) => {
   const [isShowingMobileView, setIsShowingMobileView] = useState(false);
 
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
-
+    setFinalizedSelected(selected);
     setURL(selected, searched);
   };
 

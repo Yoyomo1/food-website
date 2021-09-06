@@ -18,6 +18,7 @@ const App = () => {
 
   // Need another search state to trigger re-render when form is submitted
   const [finalizedSearch, setFinalizedSearch] = useState("");
+  const [finalizedSelected, setFinalizedSelected] = useState("");
 
   const location = useLocation();
   const history = useHistory();
@@ -74,6 +75,8 @@ const App = () => {
         setSearched,
         finalizedSearch,
         setFinalizedSearch,
+        finalizedSelected,
+        setFinalizedSelected,
       }}
     >
       <Switch>
