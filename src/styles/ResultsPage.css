@@ -60,7 +60,7 @@
 
 @media only screen and (max-width: 800px) {
   .results-grid-container {
-    width: 400px;
+    max-width: 400px;
     grid-template-columns: 1fr;
   }
 }
