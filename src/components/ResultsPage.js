@@ -69,7 +69,6 @@ const ResultsPage = () => {
               `https://www.themealdb.com/api/json/v1/1/filter.php?i=${finalizedSearch}`
             )
             .then((response) => {
-              console.log("bruh");
               changeResults(response);
             });
           break;
