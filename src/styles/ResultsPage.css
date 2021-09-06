@@ -6,7 +6,7 @@
 }
 
 .results-grid-container {
-  max-width: 1500px;
+  width: 1500px;
   margin: 2rem auto;
   display: grid;
   gap: 5rem;
@@ -46,21 +46,25 @@
 
 @media only screen and (max-width: 1600px) {
   .results-grid-container {
-    max-width: 1100px;
+    width: 1100px;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .results-grid-container {
-    max-width: 700px;
+    width: 700px;
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .results-grid-container {
-    max-width: 400px;
+    width: 400px;
     grid-template-columns: 1fr;
+  }
+
+  .result-container {
+    width: 250px;
   }
 }

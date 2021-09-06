@@ -96,7 +96,7 @@ const ResultsPage = () => {
   }, [finalizedSearch, selected]);
 
   return (
-    <div>
+    <React.Fragment>
       <div className="container">
         <NavBar
           selected={selected}
@@ -109,7 +109,7 @@ const ResultsPage = () => {
         />
       </div>
       <ResultsGrid results={results} />
-    </div>
+    </React.Fragment>
   );
 };
 
