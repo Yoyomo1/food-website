@@ -13,6 +13,7 @@ const ItemPage = () => {
     searched,
     setSearched,
     setFinalizedSearch,
+    setFinalizedSelected,
   } = useGlobalContext();
   const { name } = useParams();
   const [info, setInfo] = useState({});
@@ -69,6 +70,7 @@ const ItemPage = () => {
         searched={searched}
         setSearched={setSearched}
         setFinalizedSearch={setFinalizedSearch}
+        setFinalizedSelected={setFinalizedSelected}
       />
       <div className="content-section">
         <div className="item-grid-container">

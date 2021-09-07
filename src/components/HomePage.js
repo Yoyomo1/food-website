@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import { useRef, useEffect } from "react";
 import { queryParams } from "../data";
 import { useGlobalContext } from "../context";
+import { useHistory } from "react-router-dom";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
@@ -41,9 +42,10 @@ const HomePage = () => {
     searched,
     setSearched,
     setFinalizedSearch,
-    setURL,
+    setFinalizedSelected,
     isShowingMobileView,
   } = useGlobalContext();
+  const history = useHistory();
 
   const changeSelected = (button) => {
     setSelected(button);
@@ -52,7 +54,8 @@ const HomePage = () => {
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
-    setURL(selected, searched);
+    setFinalizedSelected(selected);
+    history.push("/results");
   };
 
   useEffect(() => {

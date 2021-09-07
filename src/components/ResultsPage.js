@@ -16,7 +16,6 @@ const Result = ({ result }) => {
 };
 
 const ResultsGrid = ({ results }) => {
-  // console.log(results);
   if (results && results.length > 0) {
     return (
       <div className="results-grid-container">
@@ -53,10 +52,9 @@ const ResultsPage = () => {
     const getResults = () => {
       const changeResults = (response) => {
         const newResults = response.data.meals;
-        console.log(newResults);
         setResults(newResults);
       };
-      // console.log(finalizedSelected, finalizedSearch);
+
       switch (finalizedSelected) {
         case "name":
           axios
@@ -64,7 +62,6 @@ const ResultsPage = () => {
               `https://www.themealdb.com/api/json/v1/1/search.php?s=${finalizedSearch}`
             )
             .then((response) => {
-              console.log("name");
               changeResults(response);
             });
           break;
@@ -74,7 +71,6 @@ const ResultsPage = () => {
               `https://www.themealdb.com/api/json/v1/1/filter.php?i=${finalizedSearch}`
             )
             .then((response) => {
-              console.log("ingredient");
               changeResults(response);
             });
           break;
@@ -84,7 +80,6 @@ const ResultsPage = () => {
               `https://www.themealdb.com/api/json/v1/1/filter.php?c=${finalizedSearch}`
             )
             .then((response) => {
-              console.log("area");
               changeResults(response);
             });
           break;
@@ -94,7 +89,6 @@ const ResultsPage = () => {
               `https://www.themealdb.com/api/json/v1/1/filter.php?a=${finalizedSearch}`
             )
             .then((response) => {
-              console.log("area", finalizedSelected);
               changeResults(response);
             });
       }
@@ -102,6 +96,7 @@ const ResultsPage = () => {
 
     getResults();
   }, [finalizedSearch, finalizedSelected]);
+
   return (
     <>
       <NavBar
