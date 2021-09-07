@@ -26,8 +26,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 35ch;
   margin-bottom: 1rem;
+  margin-left: 1rem;
+  text-transform: uppercase;
 }
 
 .name {
@@ -64,6 +65,7 @@
 
 .meal-img {
   max-width: 100%;
+  border-radius: 1rem;
 }
 
 .measurement {
@@ -87,7 +89,7 @@
     grid-template-rows: 0.5fr 2fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "name-section image-section"
+      "name-section ."
       "ingredients-section image-section"
       "ingredients-section image-section"
       "youtube-section youtube-section";
@@ -96,5 +98,8 @@
 
   .ingredients-section {
     margin-right: 2rem;
+    background: rgba(128, 128, 128, 0.26);
+    border-radius: 1rem;
+    padding: 1.5rem;
   }
 }

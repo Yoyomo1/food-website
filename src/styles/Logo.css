@@ -31,3 +31,9 @@
 .logo-link:hover .text {
   color: white;
 }
+
+@media (max-width: 377px) {
+  .border {
+    display: block;
+  }
+}

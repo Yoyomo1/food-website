@@ -8,11 +8,9 @@ const Button = ({ button, selected, changeSelected }) => {
   return (
     <button
       onClick={() => changeSelected(button)}
-      className={
-        selected.toLowerCase() === button.toLowerCase()
-          ? "selected-nav-button"
-          : "nav-button"
-      }
+      className={`nav-button ${
+        selected.toLowerCase() === button.toLowerCase() ? "bottom-border" : ""
+      }`}
     >
       {button.toUpperCase()}
     </button>
@@ -44,6 +42,7 @@ const HomePage = () => {
     setSearched,
     setFinalizedSearch,
     setURL,
+    isShowingMobileView,
   } = useGlobalContext();
 
   const changeSelected = (button) => {
@@ -62,11 +61,11 @@ const HomePage = () => {
   });
 
   return (
-    <div>
-      <div className='homepage-logo'>
-         <Logo />
-      </div>
+    <>
       <section className="hero">
+        <div className="homepage-logo">
+          <Logo />
+        </div>
         <NavBar
           buttons={buttons}
           selected={selected}
@@ -80,12 +79,15 @@ const HomePage = () => {
               value={searched}
               onChange={(e) => setSearched(e.target.value)}
               ref={inputRef}
+              placeholder={`Seach by ${selected}`}
             />
-            <button className="btn"></button>
+            <button className="btn">
+              {isShowingMobileView ? "Search" : ""}
+            </button>
           </div>
         </form>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -16,7 +16,6 @@
 }
 
 .result-container {
-  background-color: var(--accent-cl);
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -25,12 +24,14 @@
 
 .result-image {
   width: inherit;
+  margin-bottom: 2rem;
 }
 
 .result-text {
+  text-transform: uppercase;
   color: var(--main-font-cl);
   font-size: 1.25rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.26rem;
   font-weight: 500;
   text-align: center;
   margin: auto;
@@ -60,11 +61,14 @@
 
 @media only screen and (max-width: 800px) {
   .results-grid-container {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
 
   .result-container {
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
   }
 }

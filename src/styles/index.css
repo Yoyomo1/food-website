@@ -8,7 +8,7 @@
 
 :root {
   --main-bg-cl: #fff;
-  --secondary-cl: #c4c4c4;
+  --secondary-cl: rgba(128, 128, 128, 0.26);
   --accent-cl: #70a388;
   --main-font-cl: #313131;
   --secondary-font-cl: #000000;

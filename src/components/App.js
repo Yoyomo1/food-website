@@ -18,7 +18,9 @@ const App = () => {
 
   // Need another search state to trigger re-render when form is submitted
   const [finalizedSearch, setFinalizedSearch] = useState("");
-  const [finalizedSelected, setFinalizedSelected] = useState("");
+  const [finalizedSelected, setFinalizedSelected] = useState("BOB");
+
+  const [isShowingMobileView, setIsShowingMobileView] = useState(false);
 
   const location = useLocation();
   const history = useHistory();
@@ -41,6 +43,24 @@ const App = () => {
     }
   };
 
+  // Adds search text when the layout switches to mobile view
+  // Remember to update width if the css is changed
+  const handleResize = () => {
+    if (window.innerWidth <= 377) {
+      setIsShowingMobileView(true);
+    } else {
+      setIsShowingMobileView(false);
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
   useEffect(() => {
     // Parce on page reload or form submit
     const parseURL = () => {
@@ -59,6 +79,7 @@ const App = () => {
         setSelected(queryParam);
         setSearched(searchParam);
         setFinalizedSearch(searchParam);
+        setFinalizedSelected(queryParam);
       }
     };
 
@@ -77,6 +98,7 @@ const App = () => {
         setFinalizedSearch,
         finalizedSelected,
         setFinalizedSelected,
+        isShowingMobileView,
       }}
     >
       <Switch>
