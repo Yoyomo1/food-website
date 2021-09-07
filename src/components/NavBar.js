@@ -41,18 +41,16 @@ const NavBar = ({
             <option value="category">category</option>
             <option value="area">area</option>
           </select>
-          <div className="input-container">
-            <input
-              type="text"
-              className="nav-bar-input"
-              value={searched}
-              onChange={(e) => setSearched(e.target.value)}
-              placeholder={`Search by ${selected}`}
-            />
-            <button className="btn" type="submit">
-              {isShowingMobileView ? "Search" : ""}
-            </button>
-          </div>
+          <input
+            type="text"
+            className="nav-bar-input"
+            value={searched}
+            onChange={(e) => setSearched(e.target.value)}
+            placeholder={`Search by ${selected}`}
+          />
+          <button className="btn" type="submit">
+            {isShowingMobileView ? "Search" : ""}
+          </button>
         </form>
       </nav>
     </>

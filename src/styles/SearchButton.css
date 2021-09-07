@@ -1,0 +1,19 @@
+.search-btn-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 8rem;
+  height: 2.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.search-img {
+  position: absolute;
+  height: auto;
+  width: 2.5rem;
+  top: 50%;
+  left: 0;
+  transform: translate(-14%, -50%);
+}

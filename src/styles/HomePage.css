@@ -12,10 +12,16 @@
   letter-spacing: 0.4rem;
   border: none;
   background: none;
-  font-size: 1.5rem;
+  font-size: clamp(0.6rem, 0.5rem + 2vw, 2rem);
+  background-image: linear-gradient(
+    90deg,
+    var(--accent-cl),
+    rgb(100, 255, 170)
+  );
   transition: background-size 0.4s ease-out;
   background-size: 0% 0.1rem;
   background-position: 0% 100%;
+  background-repeat: no-repeat;
   padding: 0.4rem 0rem;
 }
 
@@ -28,45 +34,43 @@
 }
 
 .homepage-logo {
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-bottom: 3rem;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.home-input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .home-input {
-  margin: 0;
-  width: 46rem;
+  flex: 1;
+  margin: 0 4.2rem;
+  max-width: 46rem;
   border-radius: 1rem;
   padding: 0 1rem;
   background: var(--secondary-cl);
+  outline: 2px solid var(--accent-cl);
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 800px) {
-  .homepage-logo {
-    margin-top: 2rem;
-    margin-left: 0;
-    text-align: center;
-  }
-
   .nav-bar {
     flex-direction: column;
+    align-items: center;
   }
-
-  .home-input {
-    width: 23rem;
-  }
-}
-
-@media (max-width) {
 }
 
 /* Toggled styles */
 .bottom-border {
-  background-image: linear-gradient(
-    90deg,
-    var(--accent-cl),
-    rgb(100, 255, 170)
-  );
   background-size: 95% 0.1rem;
   background-repeat: no-repeat;
   background-position: 0% 100%;

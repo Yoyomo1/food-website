@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { queryParams } from "../data";
 import { useGlobalContext } from "../context";
 import { useHistory } from "react-router-dom";
+import SearchButton from "./SearchButton";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
@@ -43,7 +44,6 @@ const HomePage = () => {
     setSearched,
     setFinalizedSearch,
     setFinalizedSelected,
-    isShowingMobileView,
   } = useGlobalContext();
   const history = useHistory();
 
@@ -61,7 +61,7 @@ const HomePage = () => {
   useEffect(() => {
     const inputElement = inputRef.current;
     inputElement.focus();
-  });
+  }, []);
 
   return (
     <>
@@ -74,7 +74,7 @@ const HomePage = () => {
           selected={selected}
           changeSelected={changeSelected}
         />
-        <form onSubmit={(e) => submit(e)}>
+        <form className="home-input-form" onSubmit={(e) => submit(e)}>
           <div className="input-container">
             <input
               className="home-input"
@@ -85,10 +85,8 @@ const HomePage = () => {
               ref={inputRef}
               placeholder={`Seach by ${selected}`}
             />
-            <button className="btn">
-              {isShowingMobileView ? "Search" : ""}
-            </button>
           </div>
+          <SearchButton />
         </form>
       </section>
     </>
