@@ -45,6 +45,44 @@
   margin-top: 10rem;
 }
 
+.loading-bars {
+  position: relative;
+  width: 139px;
+  height: 139px;
+  margin: 5rem auto;
+}
+
+.loading-bars div {
+  display: inline-block;
+  position: absolute;
+  left: 16px;
+  background-color: var(--accent-cl);
+  width: 25px;
+  animation: loading-bars 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.loading-bars div:nth-child(2) {
+  left: 57px;
+  animation-delay: 0.12s;
+}
+
+.loading-bars div:nth-child(3) {
+  left: 98px;
+  animation-delay: 0.24s;
+}
+
+@keyframes loading-bars {
+  0% {
+    top: 0;
+    height: 139px;
+  }
+  50%,
+  100% {
+    top: 20px;
+    height: 99px;
+  }
+}
+
 @media only screen and (max-width: 1600px) {
   .results-grid-container {
     width: 1100px;
