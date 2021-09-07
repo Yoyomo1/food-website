@@ -74,6 +74,7 @@ const HomePage = () => {
         <form onSubmit={(e) => submit(e)}>
           <div className="input-container">
             <input
+              className="home-input"
               style={{ height: "3rem" }}
               type="text"
               value={searched}

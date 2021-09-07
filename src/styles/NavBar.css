@@ -1,4 +1,4 @@
-input {
+.nav-bar-input {
   display: inline-block;
   height: 2.5rem;
   padding: 0 1rem;
@@ -13,7 +13,7 @@ input {
 }
 
 @media (max-width: 377px) {
-  input {
+  .nav-bar-input {
     border-radius: 0;
     width: 100%;
   }
@@ -60,7 +60,7 @@ input {
 }
 
 @media (min-width: 378px) {
-  input {
+  .nav-bar-input {
     width: max(40vw, 150px);
     margin-left: 2vw;
     border-radius: 4rem;

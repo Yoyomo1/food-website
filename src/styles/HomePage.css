@@ -2,15 +2,21 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.8rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin-bottom: 1rem;
+  margin-bottom: 2.3rem;
 }
 
 .nav-button {
   font-size: clamp(0.8rem, 0.8rem + 4vw, 1.5rem);
+  letter-spacing: 0.4rem;
   border: none;
   background: none;
+  font-size: 1.5rem;
+  transition: background-size 0.4s ease-out;
+  background-size: 0% 0.1rem;
+  background-position: 0% 100%;
+  padding: 0.4rem 0rem;
 }
 
 .hero {
@@ -24,10 +30,18 @@
 .homepage-logo {
   margin-top: 1rem;
   margin-left: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 }
 
-@media only screen and (max-width: 900px) {
+.home-input {
+  margin: 0;
+  width: 46rem;
+  border-radius: 1rem;
+  padding: 0 1rem;
+  background: var(--secondary-cl);
+}
+
+@media (max-width: 800px) {
   .homepage-logo {
     margin-top: 2rem;
     margin-left: 0;
@@ -37,9 +51,23 @@
   .nav-bar {
     flex-direction: column;
   }
+
+  .home-input {
+    width: 23rem;
+  }
+}
+
+@media (max-width) {
 }
 
 /* Toggled styles */
 .bottom-border {
-  border-bottom: 2px solid var(--accent-cl);
+  background-image: linear-gradient(
+    90deg,
+    var(--accent-cl),
+    rgb(100, 255, 170)
+  );
+  background-size: 95% 0.1rem;
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
 }

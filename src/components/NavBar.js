@@ -45,6 +45,7 @@ const NavBar = ({
           <div className="input-container">
             <input
               type="text"
+              className="nav-bar-input"
               value={searched}
               onChange={(e) => {
                 setSearched(e.target.value);
