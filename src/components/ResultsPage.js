@@ -15,8 +15,19 @@ const Result = ({ result }) => {
   );
 };
 
-const ResultsGrid = ({ results }) => {
-  if (results && results.length > 0) {
+const LoadingBars = () => {
+  return (
+    <div className='loading-bars'>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  )
+}
+
+const ResultsGrid = ({ results,loaded }) => {
+  if (loaded) {
+    if (results && results.length > 0) {
     return (
       <div className="results-grid-container">
         {results.map((result) => (
@@ -31,6 +42,10 @@ const ResultsGrid = ({ results }) => {
       </div>
     );
   }
+  } else {
+    return <LoadingBars />
+  }
+  
 };
 
 const ResultsPage = () => {
@@ -48,11 +63,17 @@ const ResultsPage = () => {
 
   const [results, setResults] = useState([]);
 
+  const [loaded, setLoaded] = useState(false)
+
   useEffect(() => {
+
+    setLoaded(false)
+
     const getResults = () => {
       const changeResults = (response) => {
         const newResults = response.data.meals;
         setResults(newResults);
+        setLoaded(true)
       };
 
       switch (finalizedSelected) {
@@ -110,7 +131,7 @@ const ResultsPage = () => {
         finalizedSelected={finalizedSelected}
         setFinalizedSelected={setFinalizedSelected}
       />
-      <ResultsGrid results={results} />
+      <ResultsGrid results={results} loaded={loaded} />
     </>
   );
 };
