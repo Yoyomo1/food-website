@@ -17,35 +17,34 @@ const Result = ({ result }) => {
 
 const LoadingBars = () => {
   return (
-    <div className='loading-bars'>
+    <div className="loading-bars">
       <div></div>
       <div></div>
       <div></div>
     </div>
-  )
-}
+  );
+};
 
-const ResultsGrid = ({ results,loaded }) => {
+const ResultsGrid = ({ results, loaded }) => {
   if (loaded) {
     if (results && results.length > 0) {
-    return (
-      <div className="results-grid-container">
-        {results.map((result) => (
-          <Result key={result.idMeal} result={result} />
-        ))}
-      </div>
-    );
+      return (
+        <div className="results-grid-container">
+          {results.map((result) => (
+            <Result key={result.idMeal} result={result} />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div className="no-results-text">
+          We could not find any results matching your search :(
+        </div>
+      );
+    }
   } else {
-    return (
-      <div className="no-results-text">
-        We could not find any results matching your search :(
-      </div>
-    );
+    return <LoadingBars />;
   }
-  } else {
-    return <LoadingBars />
-  }
-  
 };
 
 const ResultsPage = () => {
@@ -63,17 +62,16 @@ const ResultsPage = () => {
 
   const [results, setResults] = useState([]);
 
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-
-    setLoaded(false)
+    setLoaded(false);
 
     const getResults = () => {
       const changeResults = (response) => {
         const newResults = response.data.meals;
         setResults(newResults);
-        setLoaded(true)
+        setLoaded(true);
       };
 
       switch (finalizedSelected) {

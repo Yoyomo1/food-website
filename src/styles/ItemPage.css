@@ -79,6 +79,7 @@
 
 .youtube-video {
   aspect-ratio: 16/9;
+  width: 100%;
   max-width: 100%;
 }
 

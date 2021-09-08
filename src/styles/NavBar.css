@@ -6,56 +6,44 @@
   border-style: none;
 }
 
-.youtube-video {
-  aspect-ratio: 16/9;
-  width: 100%;
-  max-width: 100%;
-}
-
 @media (max-width: 377px) {
-  .nav-bar-input {
-    border-radius: 0;
-    width: 100%;
-  }
-
-  .btn {
-    display: block;
-    position: absolute;
-    height: 2.5rem;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    transform: translate(0, 100%);
-    padding: 0;
-  }
-
   .nav-container {
-    flex-direction: column;
+    margin-top: 1rem;
   }
-
-  .select-input-container {
+  .center-logo {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    margin: 0 1rem;
+    /* Match the width of the drop-down-menu-container */
+    max-width: calc(250px + 2rem);
+    margin: 0 auto 1rem auto;
+    padding: 0 1rem;
+  }
+  .drop-down-menu-container {
+    display: none;
+    justify-content: center;
+    margin: 0 1rem;
+  }
+  .drop-down-menu {
+    display: flex;
     flex-direction: column;
     width: 100%;
-    padding-bottom: 2.5rem;
+    max-width: 250px;
   }
-
+  .burger-menu {
+    font-size: 1.5rem;
+    transition: transform 0.4s ease-in-out;
+  }
+  .query,
+  .nav-bar-input,
+  .btn {
+    height: 2.5rem;
+    border: 2px solid var(--secondary);
+  }
   .query {
-    background: var(--secondary-cl);
-    height: 2rem;
-    padding: 0 0.8rem;
-  }
-
-  .input-container {
-    display: block;
-    position: relative;
-  }
-
-  .select-input-container > * {
-    display: block;
-    width: 100%;
-    max-width: 100%;
+    padding: 0 1rem;
   }
 }
 
@@ -71,7 +59,6 @@
   .nav-container {
     display: flex;
     width: 100%;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 0.8rem;
@@ -102,8 +89,17 @@
     align-items: center;
   }
 
-  .input-container {
+  .nav-input-container {
     display: inline-block;
     position: relative;
   }
+}
+
+/* */
+.show-nav-bar {
+  display: flex;
+}
+
+.rotate-burger {
+  transform: rotate(90deg);
 }
