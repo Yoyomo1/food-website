@@ -22,16 +22,21 @@
     padding: 0 1rem;
   }
   .drop-down-menu-container {
-    display: none;
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
     justify-content: center;
     margin: 0 1rem;
+    transition: all 0.3s ease-out;
   }
   .drop-down-menu {
     display: flex;
     flex-direction: column;
+    height: inherit;
     width: 100%;
     max-width: 250px;
   }
+
   .burger-menu {
     font-size: 1.5rem;
     transition: transform 0.4s ease-in-out;
@@ -95,9 +100,9 @@
   }
 }
 
-/* */
+/* toggled styles */
 .show-nav-bar {
-  display: flex;
+  max-height: 120px; /* do it in javascript to get correct height if elements are added */
 }
 
 .rotate-burger {
