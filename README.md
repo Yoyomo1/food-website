@@ -1,3 +1,7 @@
+# Food Website
+
+This project allow users to search for recipes by using various filters like ingredient, recipe name, category, and area. The website uses themealdb API which provides the receipe data.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
