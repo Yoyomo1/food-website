@@ -46,7 +46,7 @@ const NavBar = ({
           }`}
         >
           <form className="drop-down-menu" onSubmit={(e) => submit(e)}>
-            <SelectMenu selexted={selected} setSelected={setSelected} />
+            <SelectMenu selected={selected} setSelected={setSelected} />
             <input
               type="text"
               className="nav-bar-input"
