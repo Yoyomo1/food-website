@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import { useRef, useEffect } from "react";
 import { queryParams } from "../data";
 import { useGlobalContext } from "../context";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SearchButton from "./SearchButton";
 
 const Button = ({ button, selected, changeSelected }) => {
@@ -45,7 +45,7 @@ const HomePage = () => {
     setFinalizedSearch,
     setFinalizedSelected,
   } = useGlobalContext();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const changeSelected = (button) => {
     setSelected(button);
@@ -55,7 +55,7 @@ const HomePage = () => {
     e.preventDefault();
     setFinalizedSearch(searched);
     setFinalizedSelected(selected);
-    history.push("/results");
+    navigate("/results", { query: selected, search: searched });
   };
 
   useEffect(() => {

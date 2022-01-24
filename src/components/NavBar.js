@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
 import { useGlobalContext } from "../context";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,14 +18,14 @@ const NavBar = ({
   setFinalizedSelected,
 }) => {
   const { isShowingMobileView } = useGlobalContext();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
 
   const submit = (e) => {
     e.preventDefault();
     setFinalizedSearch(searched);
     setFinalizedSelected(selected);
-    history.push("/results");
+    navigate("/results", { query: selected, search: searched });
   };
 
   // Mobile view with burger menu

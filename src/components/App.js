@@ -2,7 +2,7 @@ import "../styles/App.css";
 import ResultsPage from "./ResultsPage";
 import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ItemPage from "./ItemPage";
 import { AppProvider } from "../context";
@@ -52,20 +52,12 @@ const App = () => {
         isShowingMobileView,
       }}
     >
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/results" exact>
-          <ResultsPage />
-        </Route>
-        <Route path="/results/:name" exact>
-          <ItemPage />
-        </Route>
-        <Route path="*">
-          <ErrorPage />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/results" element={<ResultsPage />} />
+        <Route path="/results/:name" element={<ItemPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </AppProvider>
   );
 };
