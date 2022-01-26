@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
-import "../styles/ItemPage.css";
+import styles from "./styles/ItemPage.module.css";
 import { useGlobalContext } from "../context";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -72,29 +72,29 @@ const ItemPage = () => {
         setFinalizedSearch={setFinalizedSearch}
         setFinalizedSelected={setFinalizedSelected}
       />
-      <div className="content-section">
-        <div className="item-grid-container">
-          <section className="name-section">
-            <h1 className="name">{info.strMeal}</h1>
+      <div className={styles.contentSection}>
+        <div className={styles.itemGridContainer}>
+          <section className={styles.nameSection}>
+            <h1 className={styles.name}>{info.strMeal}</h1>
             <p>{info.strArea}</p>
           </section>
-          <section className="image-section">
-            <img className="meal-img" src={info.strMealThumb} alt="meal" />
+          <section className={styles.imageSection}>
+            <img className={styles.mealImg} src={info.strMealThumb} alt="meal" />
           </section>
-          <section className="ingredients-section">
-            <h2 className="ingredients-header">Ingredients</h2>
+          <section className={styles.ingredientsSection}>
+            <h2 className={styles.ingredientsHeader}>Ingredients</h2>
             {ingredients.map(({ name, measurement }) => {
               return (
-                <div key={name} className="ingredient">
-                  <p className="ingredient-name">{name}</p>
-                  <p className="measurement">{measurement}</p>
+                <div key={name} className={styles.ingredient}>
+                  <p className={styles.ingredientName}>{name}</p>
+                  <p className={styles.measurement}>{measurement}</p>
                 </div>
               );
             })}
           </section>
-          <section className="youtube-section">
+          <section className={styles.youtubeSection}>
             <iframe
-              className="youtube-video"
+              className={styles.youtubeVideo}
               title="instructional video"
               src={info.embeddedURL}
               frameBorder="0"

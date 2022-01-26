@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --primary-text: #14663a;
+  --primary: #1d824c49;
+  --secondary: #1d824c28;
+}
+
+a {
+  text-decoration: none;
+}
+
+.border {
+  border: 2px solid var(--primary);
+  display: inline-block;
+  border-radius: 5px;
+  width: 100px;
+  box-shadow: 4px 4px var(--secondary);
+}
+
+.text {
+  color: var(--primary-text);
+  margin: auto;
+  padding: 0.5rem 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.logoLink:hover .border {
+  background-color: var(--accent-cl);
+}
+
+.logoLink:hover .text {
+  color: white;
+}

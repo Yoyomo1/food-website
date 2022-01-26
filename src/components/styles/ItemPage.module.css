@@ -1,0 +1,106 @@
+.name-section,
+.ingredientsSection {
+  letter-spacing: 3px;
+}
+
+.ingredientName,
+.measurement {
+  letter-spacing: 2px;
+}
+
+.itemGridContainer {
+  display: block;
+  max-width: 600px;
+}
+
+.contentSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 2rem 2rem 2rem;
+  font-size: clamp(0.9rem, 0.5rem + 1vw, 1.5rem);
+}
+
+.nameSection {
+  grid-area: name-section;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  text-transform: uppercase;
+}
+
+.name {
+  margin-bottom: 0.5rem;
+}
+
+.ingredientsSection {
+  grid-area: ingredients-section;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.imageSection {
+  grid-area: image-section;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.ingredient {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.ingredientsHeader {
+  margin-bottom: 1rem;
+}
+
+.ingredientName {
+  flex: 1 1 auto;
+  margin-right: 4vw;
+}
+
+.mealImg {
+  max-width: 100%;
+  border-radius: 1rem;
+}
+
+.measurement {
+  min-width: 5rem;
+  text-align: end;
+}
+
+.youtubeSection {
+  grid-area: youtube-section;
+}
+
+.youtubeVideo {
+  aspect-ratio: 16/9;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 890px) {
+  .itemGridContainer {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: 0.5fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name-section ."
+      "ingredients-section image-section"
+      "ingredients-section image-section"
+      "youtube-section youtube-section";
+    max-width: none;
+  }
+
+  .ingredientsSection {
+    margin-right: 2rem;
+    background: rgba(128, 128, 128, 0.26);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+}

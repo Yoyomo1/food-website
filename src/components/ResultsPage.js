@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
-import "../styles/ResultsPage.css";
+import styles from "./styles/ResultsPage.module.css";
 import { useGlobalContext } from "../context";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,16 +8,16 @@ import axios from "axios";
 const Result = ({ result }) => {
   const urlString = `/results/${result.strMeal.replaceAll(" ", "-")}`;
   return (
-    <Link to={urlString} className="result-container">
-      <img src={result.strMealThumb} alt="food" className="result-image" />
-      <div className="result-text">{result.strMeal}</div>
+    <Link to={urlString} className={styles.resultContainer}>
+      <img src={result.strMealThumb} alt="food" className={styles.resultImage} />
+      <div className={styles.resultText}>{result.strMeal}</div>
     </Link>
   );
 };
 
 const LoadingBars = () => {
   return (
-    <div className="loading-bars">
+    <div className={styles.loadingBars}>
       <div></div>
       <div></div>
       <div></div>
@@ -29,7 +29,7 @@ const ResultsGrid = ({ results, loaded }) => {
   if (loaded) {
     if (results && results.length > 0) {
       return (
-        <div className="results-grid-container">
+        <div className={styles.resultsGridContainer}>
           {results.map((result) => (
             <Result key={result.idMeal} result={result} />
           ))}
@@ -37,7 +37,7 @@ const ResultsGrid = ({ results, loaded }) => {
       );
     } else {
       return (
-        <div className="no-results-text">
+        <div className={styles.noResultsText}>
           We could not find any results matching your search :(
         </div>
       );
