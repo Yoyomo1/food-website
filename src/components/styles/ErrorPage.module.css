@@ -1,0 +1,31 @@
+* {
+  --primary: #1d824c49;
+  --secondary: #1d824c28;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorMessage {
+  margin: 10rem auto;
+  text-align: center;
+  color: var(--main-font-cl);
+}
+
+.link {
+  text-decoration: none;
+  font-size: 3rem;
+  color: var(--main-font-cl);
+  background-color: var(--primary);
+  padding: 2rem 3rem;
+  border-radius: 10px;
+}
+
+.link:hover {
+  box-shadow: 0 0 50px var(--secondary);
+  color: white;
+  background-color: var(--accent-cl);
+}

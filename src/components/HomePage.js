@@ -1,17 +1,19 @@
-import "../styles/HomePage.css";
 import Logo from "./Logo";
 import { useRef, useEffect } from "react";
 import { queryParams } from "../data";
 import { useGlobalContext } from "../context";
 import { useHistory } from "react-router-dom";
 import SearchButton from "./SearchButton";
+import styles from "./styles/HomePage.module.css";
 
 const Button = ({ button, selected, changeSelected }) => {
   return (
     <button
       onClick={() => changeSelected(button)}
-      className={`nav-button ${
-        selected.toLowerCase() === button.toLowerCase() ? "bottom-border" : ""
+      className={`${styles.navButton} ${
+        selected.toLowerCase() === button.toLowerCase()
+          ? styles.bottomBorder
+          : ""
       }`}
     >
       {button.toUpperCase()}
@@ -21,7 +23,7 @@ const Button = ({ button, selected, changeSelected }) => {
 
 const NavBar = ({ buttons, selected, changeSelected }) => {
   return (
-    <div className="nav-bar">
+    <div className={styles.navBar}>
       {buttons.map((button) => (
         <Button
           key={button}
@@ -65,8 +67,8 @@ const HomePage = () => {
 
   return (
     <>
-      <section className="hero">
-        <div className="homepage-logo">
+      <section className={styles.hero}>
+        <div className={styles.homePageLogo}>
           <Logo />
         </div>
         <NavBar
@@ -74,10 +76,10 @@ const HomePage = () => {
           selected={selected}
           changeSelected={changeSelected}
         />
-        <form className="home-input-form" onSubmit={(e) => submit(e)}>
-          <div className="input-container">
+        <form className={styles.homeInputForm} onSubmit={(e) => submit(e)}>
+          <div className={styles.inputContainer}>
             <input
-              className="home-input"
+              className={styles.homeInput}
               style={{ height: "3rem" }}
               type="text"
               value={searched}

@@ -1,0 +1,77 @@
+.navBar {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  letter-spacing: 0.8rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 2.3rem;
+}
+
+.navButton {
+  font-size: clamp(0.8rem, 0.8rem + 4vw, 1.5rem);
+  letter-spacing: 0.4rem;
+  border: none;
+  background: none;
+  font-size: clamp(0.6rem, 0.5rem + 2vw, 2rem);
+  background-image: linear-gradient(
+    90deg,
+    var(--accent-cl),
+    rgb(100, 255, 170)
+  );
+  transition: background-size 0.4s ease-out;
+  background-size: 0% 0.1rem;
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  padding: 0.4rem 0rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.homePageLogo {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.homeInputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.homeInput {
+  flex: 1;
+  margin: 0 4.2rem;
+  max-width: 46rem;
+  border-radius: 1rem;
+  padding: 0 1rem;
+  background: var(--secondary-cl);
+  outline: 2px solid var(--accent-cl);
+}
+
+.inputContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 800px) {
+  .navBar {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Toggled styles */
+.bottomBorder {
+  background-size: 95% 0.1rem;
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+}

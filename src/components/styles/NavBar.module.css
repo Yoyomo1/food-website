@@ -1,0 +1,110 @@
+.navBarInput {
+  display: inline-block;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background: var(--secondary-cl);
+  border-style: none;
+}
+
+@media (max-width: 377px) {
+  .navContainer {
+    margin-top: 1rem;
+  }
+  .centerLogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 1rem;
+    /* Match the width of the drop-down-menu-container */
+    max-width: calc(250px + 2rem);
+    margin: 0 auto 1rem auto;
+    padding: 0 1rem;
+  }
+  .dropDownMenuContainer {
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    justify-content: center;
+    margin: 0 1rem;
+    transition: all 0.3s ease-out;
+  }
+  .dropDownMenu {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .burgerMenu {
+    font-size: 1.5rem;
+    transition: transform 0.4s ease-in-out;
+  }
+  .query,
+  .navBarInput,
+  .btn {
+    height: 2.5rem;
+    border: 2px solid var(--secondary);
+  }
+  .query {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 378px) {
+  .navBarInput {
+    width: max(40vw, 150px);
+    margin-left: 2vw;
+    border-radius: 4rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+  }
+
+  .navContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .query {
+    background: var(--secondary-cl);
+    height: 2rem;
+    max-width: 5rem;
+    border-style: none;
+  }
+
+  .btn {
+    display: inline-block;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    background: var(--accent-cl);
+    border-style: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-1.5rem, -50%);
+  }
+
+  .selectInputContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .navInputContainer {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+/* toggled styles */
+.showNavBar {
+  max-height: 120px; /* do it in javascript to get correct height if elements are added */
+}
+
+.rotateBurger {
+  transform: rotate(90deg);
+}
