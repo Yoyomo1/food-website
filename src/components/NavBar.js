@@ -1,31 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/NavBar.css";
 import Logo from "./Logo";
 import { useGlobalContext } from "../context";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import useFormInput from "../custom-hooks/useFormInput";
 
-const NavBar = ({
-  setURL,
-  selected,
-  setSelected,
-  searched,
-  setSearched,
-  finalizedSearch,
-  setFinalizedSearch,
-  finalizedSelected,
-  setFinalizedSelected,
-}) => {
+const NavBar = ({ setFinalizedQuery, setFinalizedSearch }) => {
   const { isShowingMobileView } = useGlobalContext();
-  const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
+  const search = useFormInput("");
+  const query = useFormInput("name");
 
   const submit = (e) => {
     e.preventDefault();
-    setFinalizedSearch(searched);
-    setFinalizedSelected(selected);
-    navigate("/results", { query: selected, search: searched });
+    setFinalizedSearch(search.value);
+    setFinalizedQuery(query.value);
   };
 
   // Mobile view with burger menu
@@ -46,13 +36,12 @@ const NavBar = ({
           }`}
         >
           <form className="drop-down-menu" onSubmit={(e) => submit(e)}>
-            <SelectMenu selexted={selected} setSelected={setSelected} />
+            <SelectMenu query={query} />
             <input
               type="text"
               className="nav-bar-input"
-              value={searched}
-              onChange={(e) => setSearched(e.target.value)}
-              placeholder={`Search by ${selected}`}
+              placeholder={`Search by ${search.value}`}
+              {...search}
             />
             <button className="btn" type="submit">
               Search
@@ -69,14 +58,13 @@ const NavBar = ({
         <nav className="nav-container">
           <Logo />
           <form className="select-input-container" onSubmit={(e) => submit(e)}>
-            <SelectMenu selected={selected} setSelected={setSelected} />
+            <SelectMenu {...query} />
             <div className="nav-input-container">
               <input
                 type="text"
                 className="nav-bar-input"
-                value={searched}
-                onChange={(e) => setSearched(e.target.value)}
-                placeholder={`Search by ${selected}`}
+                placeholder={`Search by ${search.value}`}
+                {...search}
               />
               <button className="btn" type="submit">
                 {isShowingMobileView ? "Search" : ""}
@@ -89,14 +77,9 @@ const NavBar = ({
   }
 };
 
-const SelectMenu = ({ selected, setSelected }) => {
+const SelectMenu = (props) => {
   return (
-    <select
-      className="query"
-      name="query"
-      value={selected}
-      onChange={(e) => setSelected(e.target.value)}
-    >
+    <select className="query" name="query" {...props}>
       <option value="name">name</option>
       <option value="ingredient">ingredient</option>
       <option value="category">category</option>

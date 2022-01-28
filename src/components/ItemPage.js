@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar";
 import "../styles/ItemPage.css";
-import { useGlobalContext } from "../context";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ItemPage = () => {
-  const {
-    setURL,
-    selected,
-    setSelected,
-    searched,
-    setSearched,
-    setFinalizedSearch,
-    setFinalizedSelected,
-  } = useGlobalContext();
   const { name } = useParams();
   const [info, setInfo] = useState({});
   const [ingredients, setIngredients] = useState([]);
@@ -63,15 +52,7 @@ const ItemPage = () => {
 
   return (
     <>
-      <NavBar
-        setURL={setURL}
-        selected={selected}
-        setSelected={setSelected}
-        searched={searched}
-        setSearched={setSearched}
-        setFinalizedSearch={setFinalizedSearch}
-        setFinalizedSelected={setFinalizedSelected}
-      />
+      {/* <NavBar /> */}
       <div className="content-section">
         <div className="item-grid-container">
           <section className="name-section">

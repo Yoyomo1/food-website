@@ -1,17 +1,16 @@
 import "../styles/HomePage.css";
 import Logo from "./Logo";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { queryParams } from "../data";
-import { useGlobalContext } from "../context";
 import { useNavigate } from "react-router-dom";
 import SearchButton from "./SearchButton";
 
-const Button = ({ button, selected, changeSelected }) => {
+const Button = ({ button, query, setQuery }) => {
   return (
     <button
-      onClick={() => changeSelected(button)}
+      onClick={() => setQuery(button)}
       className={`nav-button ${
-        selected.toLowerCase() === button.toLowerCase() ? "bottom-border" : ""
+        query.toLowerCase() === button.toLowerCase() ? "bottom-border" : ""
       }`}
     >
       {button.toUpperCase()}
@@ -19,43 +18,33 @@ const Button = ({ button, selected, changeSelected }) => {
   );
 };
 
-const NavBar = ({ buttons, selected, changeSelected }) => {
+const Query = ({ buttons, query, setQuery }) => {
   return (
     <div className="nav-bar">
       {buttons.map((button) => (
         <Button
           key={button}
           button={button}
-          selected={selected}
-          changeSelected={changeSelected}
+          query={query}
+          setQuery={setQuery}
         />
       ))}
     </div>
   );
 };
 
-const HomePage = () => {
+const HomePage = ({ setFinalizedQuery, setFinalizedSearch }) => {
   const buttons = queryParams;
   const inputRef = useRef(undefined);
-  const {
-    selected,
-    setSelected,
-    searched,
-    setSearched,
-    setFinalizedSearch,
-    setFinalizedSelected,
-  } = useGlobalContext();
   const navigate = useNavigate();
-
-  const changeSelected = (button) => {
-    setSelected(button);
-  };
+  const [query, setQuery] = useState("name");
+  const [search, setSearch] = useState("");
 
   const submit = (e) => {
     e.preventDefault();
-    setFinalizedSearch(searched);
-    setFinalizedSelected(selected);
-    navigate("/results", { query: selected, search: searched });
+    setFinalizedSearch(search);
+    setFinalizedQuery(query);
+    navigate("results");
   };
 
   useEffect(() => {
@@ -69,21 +58,17 @@ const HomePage = () => {
         <div className="homepage-logo">
           <Logo />
         </div>
-        <NavBar
-          buttons={buttons}
-          selected={selected}
-          changeSelected={changeSelected}
-        />
+        <Query buttons={buttons} query={query} setQuery={setQuery} />
         <form className="home-input-form" onSubmit={(e) => submit(e)}>
           <div className="input-container">
             <input
               className="home-input"
               style={{ height: "3rem" }}
               type="text"
-              value={searched}
-              onChange={(e) => setSearched(e.target.value)}
               ref={inputRef}
-              placeholder={`Seach by ${selected}`}
+              placeholder={`Seach by ${query}`}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <SearchButton />

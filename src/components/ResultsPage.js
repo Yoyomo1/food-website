@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
 import "../styles/ResultsPage.css";
-import { useGlobalContext } from "../context";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -47,21 +45,8 @@ const ResultsGrid = ({ results, loaded }) => {
   }
 };
 
-const ResultsPage = () => {
-  const {
-    setURL,
-    selected,
-    setSelected,
-    searched,
-    setSearched,
-    finalizedSearch,
-    setFinalizedSearch,
-    finalizedSelected,
-    setFinalizedSelected,
-  } = useGlobalContext();
-
+const ResultsPage = ({ finalizedQuery, finalizedSearch }) => {
   const [results, setResults] = useState([]);
-
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -74,7 +59,7 @@ const ResultsPage = () => {
         setLoaded(true);
       };
 
-      switch (finalizedSelected) {
+      switch (finalizedQuery) {
         case "name":
           axios
             .get(
@@ -114,24 +99,9 @@ const ResultsPage = () => {
     };
 
     getResults();
-  }, [finalizedSearch, finalizedSelected]);
+  }, [finalizedSearch, finalizedQuery]);
 
-  return (
-    <>
-      <NavBar
-        selected={selected}
-        setSelected={setSelected}
-        searched={searched}
-        setSearched={setSearched}
-        finalizedSearch={finalizedSearch}
-        setFinalizedSearch={setFinalizedSearch}
-        setURL={setURL}
-        finalizedSelected={finalizedSelected}
-        setFinalizedSelected={setFinalizedSelected}
-      />
-      <ResultsGrid results={results} loaded={loaded} />
-    </>
-  );
+  return <ResultsGrid results={results} loaded={loaded} />;
 };
 
 export default ResultsPage;
