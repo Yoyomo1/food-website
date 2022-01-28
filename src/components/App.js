@@ -1,4 +1,3 @@
-import styles from "./styles/App.module.css";
 import ResultsPage from "./ResultsPage";
 import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
