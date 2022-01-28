@@ -2,22 +2,15 @@ import styles from "./styles/App.module.css";
 import ResultsPage from "./ResultsPage";
 import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
-import { Switch, Route } from "react-router-dom";
+import NavBar from "./NavBar";
+import { Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ItemPage from "./ItemPage";
 import { AppProvider } from "../context";
 
 const App = () => {
-  // State variable for current selected query
-  const [selected, setSelected] = useState("name");
-
-  // State variable for input form control parameter (search param)
-  const [searched, setSearched] = useState("");
-
-  // Need another search state to trigger re-render when form is submitted
+  const [finalizedQuery, setFinalizedQuery] = useState("name");
   const [finalizedSearch, setFinalizedSearch] = useState("");
-  const [finalizedSelected, setFinalizedSelected] = useState("");
-
   const [isShowingMobileView, setIsShowingMobileView] = useState(false);
 
   // Adds search text when the layout switches to mobile view
@@ -41,31 +34,49 @@ const App = () => {
   return (
     <AppProvider
       value={{
-        selected,
-        setSelected,
-        searched,
-        setSearched,
-        finalizedSearch,
-        setFinalizedSearch,
-        finalizedSelected,
-        setFinalizedSelected,
         isShowingMobileView,
       }}
     >
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/results" exact>
-          <ResultsPage />
-        </Route>
-        <Route path="/results/:name" exact>
-          <ItemPage />
-        </Route>
-        <Route path="*">
-          <ErrorPage />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              setFinalizedQuery={setFinalizedQuery}
+              setFinalizedSearch={setFinalizedSearch}
+            />
+          }
+        />
+
+        <Route
+          path="results"
+          element={
+            <>
+              <NavBar
+                setFinalizedQuery={setFinalizedQuery}
+                setFinalizedSearch={setFinalizedSearch}
+              />
+              <ResultsPage
+                finalizedQuery={finalizedQuery}
+                finalizedSearch={finalizedSearch}
+              />
+            </>
+          }
+        />
+        <Route
+          path="results/:name"
+          element={
+            <>
+              <NavBar
+                setFinalizedQuery={setFinalizedQuery}
+                setFinalizedSearch={setFinalizedSearch}
+              />
+              <ItemPage />
+            </>
+          }
+        />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </AppProvider>
   );
 };

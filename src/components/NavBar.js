@@ -1,31 +1,21 @@
-import React, { useState } from "react";
 import styles from "./styles/NavBar.module.css";
+import { useState } from "react";
 import Logo from "./Logo";
 import { useGlobalContext } from "../context";
-import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import useFormInput from "../custom-hooks/useFormInput";
 
-const NavBar = ({
-  setURL,
-  selected,
-  setSelected,
-  searched,
-  setSearched,
-  finalizedSearch,
-  setFinalizedSearch,
-  finalizedSelected,
-  setFinalizedSelected,
-}) => {
+const NavBar = ({ setFinalizedQuery, setFinalizedSearch }) => {
   const { isShowingMobileView } = useGlobalContext();
-  const history = useHistory();
   const [isToggled, setIsToggled] = useState(false);
+  const search = useFormInput("");
+  const query = useFormInput("name");
 
   const submit = (e) => {
     e.preventDefault();
-    setFinalizedSearch(searched);
-    setFinalizedSelected(selected);
-    history.push("/results");
+    setFinalizedSearch(search.value);
+    setFinalizedQuery(query.value);
   };
 
   // Mobile view with burger menu
@@ -36,7 +26,9 @@ const NavBar = ({
           <Logo />
           <FontAwesomeIcon
             icon={faBars}
-            className={`${styles.burgerMenu} ${isToggled ? styles.rotateBurger : ""}`}
+            className={`${styles.burgerMenu} ${
+              isToggled ? styles.rotateBurger : ""
+            }`}
             onClick={() => setIsToggled(!isToggled)}
           />
         </div>
@@ -45,16 +37,13 @@ const NavBar = ({
             isToggled ? styles.showNavBar : ""
           }`}
         >
-
           <form className={styles.dropDownMenu} onSubmit={(e) => submit(e)}>
-            <SelectMenu selexted={selected} setSelected={setSelected} />
-
+            <SelectMenu query={query} />
             <input
               type="text"
               className={styles.navBarInput}
-              value={searched}
-              onChange={(e) => setSearched(e.target.value)}
-              placeholder={`Search by ${selected}`}
+              placeholder={`Search by ${search.value}`}
+              {...search}
             />
             <button className={styles.btn} type="submit">
               Search
@@ -70,15 +59,17 @@ const NavBar = ({
       <>
         <nav className={styles.navContainer}>
           <Logo />
-          <form className={styles.selectInputContainer} onSubmit={(e) => submit(e)}>
-            <SelectMenu selected={selected} setSelected={setSelected} />
+          <form
+            className={styles.selectInputContainer}
+            onSubmit={(e) => submit(e)}
+          >
+            <SelectMenu {...query} />
             <div className={styles.navInputContainer}>
               <input
                 type="text"
                 className={styles.navBarInput}
-                value={searched}
-                onChange={(e) => setSearched(e.target.value)}
-                placeholder={`Search by ${selected}`}
+                placeholder={`Search by ${search.value}`}
+                {...search}
               />
               <button className={styles.btn} type="submit">
                 {isShowingMobileView ? "Search" : ""}
@@ -91,14 +82,9 @@ const NavBar = ({
   }
 };
 
-const SelectMenu = ({ selected, setSelected }) => {
+const SelectMenu = (props) => {
   return (
-    <select
-      className={styles.query}
-      name="query"
-      value={selected}
-      onChange={(e) => setSelected(e.target.value)}
-    >
+    <select className={styles.query} name="query" {...props}>
       <option value="name">name</option>
       <option value="ingredient">ingredient</option>
       <option value="category">category</option>

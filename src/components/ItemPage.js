@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar";
 import styles from "./styles/ItemPage.module.css";
-import { useGlobalContext } from "../context";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ItemPage = () => {
-  const {
-    setURL,
-    selected,
-    setSelected,
-    searched,
-    setSearched,
-    setFinalizedSearch,
-    setFinalizedSelected,
-  } = useGlobalContext();
   const { name } = useParams();
   const [info, setInfo] = useState({});
   const [ingredients, setIngredients] = useState([]);
@@ -63,15 +52,6 @@ const ItemPage = () => {
 
   return (
     <>
-      <NavBar
-        setURL={setURL}
-        selected={selected}
-        setSelected={setSelected}
-        searched={searched}
-        setSearched={setSearched}
-        setFinalizedSearch={setFinalizedSearch}
-        setFinalizedSelected={setFinalizedSelected}
-      />
       <div className={styles.contentSection}>
         <div className={styles.itemGridContainer}>
           <section className={styles.nameSection}>
@@ -79,7 +59,11 @@ const ItemPage = () => {
             <p>{info.strArea}</p>
           </section>
           <section className={styles.imageSection}>
-            <img className={styles.mealImg} src={info.strMealThumb} alt="meal" />
+            <img
+              className={styles.mealImg}
+              src={info.strMealThumb}
+              alt="meal"
+            />
           </section>
           <section className={styles.ingredientsSection}>
             <h2 className={styles.ingredientsHeader}>Ingredients</h2>
